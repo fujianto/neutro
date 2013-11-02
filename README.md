@@ -1,6 +1,6 @@
 === Neutro  ===
 Contributors: Septian Ahmad Fujianto
-Tags: gray, white, two-columns, three-columns, right-sidebar, flexible-width, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
+Tags: gray, white, green, blue, two-columns, three-columns, right-sidebar, flexible-width, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 3.6
 Tested up to: 3.7.1
 Stable tag: 1.0
