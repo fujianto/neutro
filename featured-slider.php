@@ -6,6 +6,7 @@
  *
  * @package Neutro
  * @subpackage Template
+ * @since 1.0
  */
 ?>
 <?php if(is_home() && !is_paged() && hybrid_get_setting('featured_slider_display') != 1 ): ?>

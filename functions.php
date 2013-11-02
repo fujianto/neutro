@@ -20,12 +20,12 @@
  *
  * @package    Neutro
  * @subpackage Functions
- * @version    0.1.0
- * @since      0.1.0
+ * @version    1.0
+ * @since      1.0
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013, Septian Ahmad Fujianto
- * @link       http://seotemplates.net/blog/wordpress-theme/neutro-wordpress-theme/
- * @license    http://www.gnu.org/licenses/gpl-3.0.html
+ * @link       http://seotemplates.net/blog/theme/neutro-wordpress-theme/
+ * @license    http://www.gnu.org/licenses/gpl-2.0.html
  */
 
 /* Load the core theme framework. */

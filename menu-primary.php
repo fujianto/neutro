@@ -1,3 +1,13 @@
+<?php
+/**
+ * The template for displaying Primary menu in the header
+ *
+ * @package Neutro
+ * @subpackage Template
+ * @since 1.0
+ */
+?>
+
 <?php if ( has_nav_menu( 'primary' ) ) {
 
 	wp_nav_menu(

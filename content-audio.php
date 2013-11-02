@@ -1,3 +1,12 @@
+<?php
+/**
+ * The template for displaying posts in the Audio post format
+ *
+ * @package Neutro
+ * @subpackage Template
+ * @since 1.0
+ */
+?>
 <?php if ( is_singular( get_post_type() ) ) { ?>
 
 	<article <?php hybrid_post_attributes(); ?>>

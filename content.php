@@ -1,3 +1,15 @@
+<?php
+/**
+ * The default template for displaying content
+ *
+ * Used for both single and index/archive/search.
+ *
+ * @package Neutro
+ * @subpackage Template
+ * @since 1.0
+ */
+?>
+
 <?php if ( is_singular( get_post_type() ) ) { ?>
 
 	<article <?php hybrid_post_attributes(); ?>>
