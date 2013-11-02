@@ -144,6 +144,8 @@ function neutro_theme_setup() {
 
 	/* Handle content width for embeds and images. */
 	hybrid_set_content_width( 768 );
+
+	load_theme_textdomain( 'neutro', THEME_URI. '/languages' );
 }
 
 /*	Custom css value from Theme Options */
