@@ -60,6 +60,10 @@ Modify backend functionality from theme options. On Footer settings, you can edi
 
 Most of theme functionality and design can be customized from theme customizer. See appearance -> Themes -> Under description of current theme choose Customize, in order to access it. In theme customizer, you can upload your website logo and change your theme colors.  
 
+=== Featured Slider ===
+
+ You can add content to Featured slider by assigning sticky post or by selecting categories to assign content by category on Theme Settings. You can also disable featured slider altogether if you do not need one. If no featured category found and no post set to sticky, it will get latest post as content.
+
 === Featured image Functionality ===
 
 Post thumnail appear on list of post and single page for standard and gallery post format. You can specify featured image or the first image will be used as featured image.
@@ -83,9 +87,21 @@ You can easily add widget on 3 customizable widgetized area, consisting wide rig
 
 Go to theme customizer,  See Appearance -> Themes -> Under description of current theme choose Customize. 
 
+= Images on Featured slider (other places) didn't look proportional / weird =
+
+Please upload image with same aspect ratio, Ideally with 768x372px. You can use Force regenerate Thumbnail (http://wordpress.org/plugins/force-regenerate-thumbnails/) to take care for old posts.
+
 = How to add Hot Video widget on sidebar? =
 
 You have to install Query Posts plugin (), and add the widget to sidebar. On post_class in the widget options, add query-widget-sidebar as class. On post_format, add post-format-video to only show video or post-format-video, post-format-audio to show both video and audio.
+
+= The theme layout break / look bad on Internet Explorer 8? =
+
+Sorry, this theme only support Internet Explorer 9 and newer version. Atleast the layout degraded nicely on IE8. 
+
+= I don't see any menus? =
+
+You have to assign menus to the primary and secondari menu from Menus in Dashboard. 
 
 = How do I contact you? =
 
