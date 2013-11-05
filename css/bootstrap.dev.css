@@ -8,9 +8,9 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 @font-face {
-  font-family: 'CaviarDreamsRegular';
-  src: url('../font/CaviarDreams-webfont.eot');
-  src: url('../font/CaviarDreams-webfont.eot?#iefix') format('embedded-opentype'), url('../font/CaviarDreams-webfont.woff') format('woff'), url('../font/CaviarDreams-webfont.ttf') format('truetype'), url('../font/CaviarDreams-webfont.svg#CaviarDreamsRegular') format('svg');
+  font-family: 'droid_serifregular';
+  src: url('../font/droid_serif_regular/DroidSerif-webfont.eot');
+  src: url('../font/droid_serif_regular/DroidSerif-webfont.eot?#iefix') format('embedded-opentype'), url('../font/droid_serif_regular/DroidSerif-webfont.woff') format('woff'), url('../font/droid_serif_regular/DroidSerif-webfont.ttf') format('truetype'), url('../font/droid_serif_regular/roidSerif-webfont.svg#droid_serifregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }

@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'CaviarDreamsRegular';
-  src: url('../font/CaviarDreams-webfont.eot');
-  src: url('../font/CaviarDreams-webfont.eot?#iefix') format('embedded-opentype'), url('../font/CaviarDreams-webfont.woff') format('woff'), url('../font/CaviarDreams-webfont.ttf') format('truetype'), url('../font/CaviarDreams-webfont.svg#CaviarDreamsRegular') format('svg');
+  font-family: 'droid_serifregular';
+  src: url('../font/droid_serif_regular/DroidSerif-webfont.eot');
+  src: url('../font/droid_serif_regular/DroidSerif-webfont.eot?#iefix') format('embedded-opentype'), url('../font/droid_serif_regular/DroidSerif-webfont.woff') format('woff'), url('../font/droid_serif_regular/DroidSerif-webfont.ttf') format('truetype'), url('../font/droid_serif_regular/roidSerif-webfont.svg#droid_serifregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -80,7 +80,7 @@
 .button-nav-green {
   background: #19c4cf;
   color: white;
-  font: 15px 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 15px 'droid_serifregular', serif;
   text-transform: lowercase;
 }
 
@@ -258,6 +258,7 @@ input[type="color"]:focus {
   color: #ffffff;
   background-color: #19c4cf;
   border-color: #19c4cf;
+  cursor: none;
 }
 
 .btn.btn-inside:hover,
@@ -337,7 +338,7 @@ input[type="color"]:focus {
 }
 
 .main-menu ul > li a {
-  font: 14px/21px 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 14px/21px 'droid_serifregular', serif;
   text-transform: lowercase;
   color: #333333;
 }
@@ -452,7 +453,7 @@ input[type="color"]:focus {
 }
 
 #top-search #search {
-  font: 14px/21px 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 14px/21px 'droid_serifregular', serif;
 }
 
 /*******   Secondary menu  ********/
@@ -568,7 +569,7 @@ input[type="color"]:focus {
 }
 
 .widget h3 {
-  font: 22px/1em 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 22px/1em 'droid_serifregular', serif;
   text-transform: lowercase;
 }
 
@@ -676,6 +677,23 @@ input[type="color"]:focus {
 
 .item.sticky {
   background: floralwhite;
+}
+
+.error {
+  width: 100%;
+}
+
+.error h1 {
+  margin: 0;
+  font-size: 17px;
+  line-height: 25px;
+  margin-top: 1em;
+  padding: 0 1em 0 1em;
+  font-weight: 500;
+}
+
+.error p {
+  padding: 1em;
 }
 
 /***  Query post styling  ***/
@@ -979,7 +997,7 @@ section[id*="query-post"] .widget {
   background: #19c4cf;
   padding: 0.8em 1em;
   color: #ffffff;
-  font-family: 'CaviarDreamsRegular', Arial, sans-serif;
+  font-family: 'droid_serifregular', serif;
   border: 0;
 }
 
@@ -1131,7 +1149,7 @@ section[id*="query-post"] .widget {
 .article-author h5 {
   margin: 0 0 1em 0;
   text-transform: lowercase;
-  font-family: 'CaviarDreamsRegular', Arial, sans-serif;
+  font-family: 'droid_serifregular', serif;
 }
 
 .article-author a {
@@ -1168,7 +1186,7 @@ section[id*="query-post"] .widget {
 }
 
 .articles-pager .txt {
-  font-family: 'CaviarDreamsRegular', Arial, sans-serif;
+  font-family: 'droid_serifregular', serif;
   text-transform: lowercase;
   font-size: 1.3em;
   color: #333333;
@@ -1260,7 +1278,7 @@ section[id*="query-post"] .widget {
 }
 
 .comment-area .comment-area-title {
-  font-family: 'CaviarDreamsRegular', Arial, sans-serif;
+  font-family: 'droid_serifregular', serif;
   font-weight: normal;
   margin-bottom: 1em;
   text-transform: lowercase;
@@ -1366,7 +1384,7 @@ section[id*="query-post"] .widget {
 .comment-area .comments-nav .prev {
   background: #19c4cf;
   color: white;
-  font: 15px 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 15px 'droid_serifregular', serif;
   text-transform: lowercase;
   padding: 0.5em 1.5em 0.5em 0.3em;
   float: left;
@@ -1394,7 +1412,7 @@ section[id*="query-post"] .widget {
 .comment-area .comments-nav .next {
   background: #19c4cf;
   color: white;
-  font: 15px 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 15px 'droid_serifregular', serif;
   text-transform: lowercase;
   padding: 0.5em 0.3em 0.5em 1.5em;
   float: right;
@@ -1416,7 +1434,7 @@ section[id*="query-post"] .widget {
 }
 
 .comment-area #respond h3 {
-  font-family: 'CaviarDreamsRegular', Arial, sans-serif;
+  font-family: 'droid_serifregular', serif;
   font-weight: normal;
   margin-bottom: 1em;
 }
@@ -1527,7 +1545,7 @@ section[id*="query-post"] .widget {
 .page-numbers.prev {
   background: #19c4cf;
   color: white;
-  font: 15px 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 15px 'droid_serifregular', serif;
   text-transform: lowercase;
   padding: 0.5em 1.5em 0.5em 0.3em;
 }
@@ -1550,7 +1568,7 @@ section[id*="query-post"] .widget {
 .page-numbers.next {
   background: #19c4cf;
   color: white;
-  font: 15px 'CaviarDreamsRegular', Arial, sans-serif;
+  font: 15px 'droid_serifregular', serif;
   text-transform: lowercase;
   padding: 0.5em 0.3em 0.5em 1.5em;
 }

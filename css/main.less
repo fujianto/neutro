@@ -50,7 +50,7 @@ blockquote{
     padding: 1em 1em 3em 3em;
     margin: 2em 0;
     font-style: italic;
-    font-family: 'open_sanslight', sans-serif;
+    font-family: @lightFont;
     color: @blockquote-text-color;
     clear: both;
 
@@ -154,7 +154,8 @@ input[type="color"]{
 
         .text-tagline{
             margin: 0;
-            font-size: 14px;
+            font-size: 1em;
+            font-family: @lightFont;
         }
     }
 }
@@ -367,7 +368,7 @@ input[type="color"]{
     margin-bottom: 2em;
 
     h3{
-        font: 22px/1em @menuFontFamily;
+        font: 20px/1em @menuFontFamily;
         text-transform: lowercase;
     }   
 
@@ -496,7 +497,7 @@ section[id*="query-post"]{
     border: 0;
 
     .widget-title{
-        font-family: @bodyHeadingFontFamily;
+        font-family: @menuFontFamily;
         text-transform: none;  
         margin-bottom: 1em;
     }
