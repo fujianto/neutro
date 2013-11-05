@@ -40,7 +40,7 @@
                         <header class="website-logo">
 
                         <?php $customizer_options = get_option('neutro_customizer'); ?>
-                          <?php if($customizer_options['display_logo'] != 0 || $customizer_options['neutro_logo'] != '') : ?>
+                          <?php if($customizer_options['display_logo'] === true ) : ?>
 
                             <h1 class="logo-heading">
                               <a href="<?php echo home_url(); ?>"> <img src="<?php echo $customizer_options['neutro_logo']; ?>" alt="logo" class="logo"></a>
@@ -50,7 +50,7 @@
                  
                             <hgroup class="text-logo-group">
                               <h1 class="text-logo"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-                              <h2 class="text-tagline"><?php bloginfo('description'); ?> With special care</h2>
+                              <h2 class="text-tagline"><?php bloginfo('description'); ?> </h2>
                             </hgroup>
                           
                           <?php endif; ?>
