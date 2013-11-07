@@ -115,7 +115,7 @@ Sorry, this theme only supports Internet Explorer 9 and newer version. At least 
 
 You have to assign menus to the primary and secondary menu from Menus in Dashboard. 
 
-** How do I contact you?**
+**How do I contact you?**
 
 You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `seotemplates.net` or mention me on twitter `@fujianto`.
 
