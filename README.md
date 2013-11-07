@@ -84,7 +84,7 @@ Post thumbnail appear on list of post and single page for standard and gallery p
 
 Posts with the aside, status and quote post formats will displayed with no title
 the quote post format will only display the post's first <code>&lt;blockquote&gt;</code> tag.
-Posts with the link post format will link out to the first <a> tag in the post.
+Posts with the link post format will link out to the first <code>&lt;a&gt;</code> tag in the post.
 Post with gallery format will get three images from the gallery list.
 Post format Audio and Video will embed the audio/video player inside the post and on each individual post on list of post.
 Post format chat will highlight every person bubble with different colors.
