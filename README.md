@@ -1,41 +1,49 @@
-=== Neutro  ===
-Contributors: Septian Ahmad Fujianto
-Tags: gray, white, green, blue, two-columns, three-columns, right-sidebar, flexible-width, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
-Requires at least: 3.6
-Tested up to: 3.7.1
-Stable tag: 1.0.1
-License: GPL
-License URI: http://www.gnu.org/licenses/gpl.html
+<h1>Neutro</h1>
 
-Description: A responsive modern design theme geared to unleash your website content potential. Support WordPress post formats, with specially tailored design. Built in touch ready featured content slider with configurable content options, Theme customizer and Custom css, to customize theme look and feel to match your desire.  
+**Contributors**: Septian Ahmad Fujianto
 
-Neutro WordPress theme, Copyright (C) 2013 Septian Ahmad Fujianto 
-Neutro WordPress theme is licensed under the GPL.
+**Tags**: gray, white, green, blue, two-columns, three-columns, right-sidebar, flexible-width, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
 
-== Description ==
+**Requires at least**: 3.6
+
+**Tested up to**: 3.7.1
+
+**Stable tag**: 1.0.1
+
+**License**: GPL
+
+**License URI**:[ http://www.gnu.org/licenses/gpl.html]( http://www.gnu.org/licenses/gpl.html)
+
+
+**Description**: A responsive modern design theme geared to unleash your website content potential. Support WordPress post formats, with specially tailored design. Built in touch ready featured content slider with configurable content options, Theme customizer and Custom css, to customize theme look and feel to match your desire.  
+
+*Neutro WordPress theme, Copyright (C) 2013 Septian Ahmad Fujianto 
+Neutro WordPress theme is licensed under the G*PL.
+
+<h2> Description</h2>
 
 A responsive modern design theme geared to unleash your website content potential. Built based upon HTML5, CSS3 and the rock solid Hybrid Core framework, ensuring the best design and backend code. Support WordPress post formats, with specially tailored design for every supported post formats. Built in touch ready featured content slider with configurable content options, you can easily show your best content to audiences. With Theme customizer and custom css, you can easily customize the theme look and feel to match your desire. The perfect starting point theme for any kind of website you desired.   
 
-== Installation ==
+<h2> Installation </h2>
 
-Manual installation:
+**Manual installation**:
 
 1. Upload the `neutro` folder to the `/wp-content/themes/` directory
 
-Installation using "Add New Theme"
+**Installation using *Add New Theme***
 
 1. From your Admin UI (Dashboard), use the menu to select Themes -> Add New
 2. Search for 'neutro'
 3. Click the 'Install' button to open the theme's repository listing
 4. Click the 'Install' button
 
-Activiation and Use
+**Activiation and Use**
 
 1. Activate the Theme through the 'Themes' menu in WordPress
 2. See Appearance -> Theme Settings to change theme specific options
 3. See Appearance -> Themes -> under description of current theme choose Customize to customize theme visual design.
 
-== License ==
+<h2> License</h2>
 
 All the theme files, scripts and images are copyrighted to Septian Ahmad Fujianto and licensed under GNU General Public License.
 The exceptions to this license are as follows:
@@ -50,78 +58,78 @@ The exceptions to this license are as follows:
 * Open Sans - copyrighted by Steve Matteson and licensed under Apache License v2.0.
 * Bootstrap - http://getbootstrap.com/2.3.2/ copyrighted by Mark Otto and Jacob Thornton is licensed under Apache License v2.0.
 
-== Theme Notes ==
+<h2> Theme Notes</h2>
 
-=== Theme Options ===
+<h3> Theme Options </h3>
 
 Modify backend functionality from theme options. On Footer settings, you can edit the footer text, website link and theme link. On Featured slider settings, you can disable featured slider and specify featured slider content by category. On Custom css settings, you can add css to modify theme look and feel without directly editing theme css files.
 
-=== Theme Customizer ===
+<h3>Theme Customizer</h3>
 
 Most of theme functionality and design customizable from theme customizer. See appearance -> Themes -> under description of current theme choose Customize, in order to access it. In theme customizer, you can upload your website logo and change your theme colors.  
 
-=== Featured Slider ===
+<h3>Featured Slider </h3>
 
  You can add content to Featured slider by assigning sticky post or by selecting categories to assign content by category on Theme Settings. You can also disable featured slider altogether if you do not need one. If no featured category found and no post set to sticky, it will get latest post as content.
 
-=== Custom menu ===
+<h3> Custom menu </h3>
 
 You have to assign menus to the primary and secondary menu from Menus in Dashboard. For primary menu, it's recommended to use short menu with small number of menus, since the primary menu space is limited.
 
-=== Featured image Functionality ===
+<h3>Featured image Functionality</h3>
 
 Post thumbnail appear on list of post and single page for standard and gallery post format. You can specify featured image or the first image will be used as featured image.
 
-=== Post Formats ===
+<h3>Post Formats </h3>
 
-Posts with the aside, status & quote post formats will displayed with no title;
-the quote post format will only display the post's first <blockquote> tag.
+Posts with the aside, status and quote post formats will displayed with no title
+the quote post format will only display the post's first <code>&lt;blockquote&gt;</code> tag.
 Posts with the link post format will link out to the first <a> tag in the post.
 Post with gallery format will get three images from the gallery list.
 Post format Audio and Video will embed the audio/video player inside the post and on each individual post on list of post.
 Post format chat will highlight every person bubble with different colors.
 
-=== Widgets Areas ===
+<h3> Widgets Areas</h3>
 
 You can easily add widget on 3 customizable widgetized area, consisting wide right sidebar and two small left and right sidebar.
 
-== Frequently Asked Questions ==
+<h2> Frequently Asked Questions </h2>
 
-= How to change logo and theme colors =
+<h3>How to change logo and theme colors</h3>
 
 Go to theme customizer, See Appearance -> Themes -> Under description of current theme choose Customize. 
 
-= Images on Featured slider (other places) did not look proportional / weird =
+<h3>Images on Featured slider (other places) did not look proportional / weird</h3>
 
 Please upload image with same aspect ratio, Ideally with 768x372px. You can use Force regenerate Thumbnail (http://wordpress.org/plugins/force-regenerate-thumbnails/) to take care for old posts.
 
-=  Featured media on sidebar? =
+<h3>  Featured media on sidebar? </h3>
 
 You have to install Query Posts plugin (http://wordpress.org/plugins/query-posts/), and add the widget to sidebar. On post_class in the widget options, add query-widget-sidebar as class. On post_format, add post-format-video to only show video or post-format-video, post-format-audio to show both video and audio.
 
-= The theme layout breaks / looks bad on Internet Explorer 8? =
+<h3> The theme layout breaks / looks bad on Internet Explorer 8?</h3>
 
 Sorry, this theme only supports Internet Explorer 9 and newer version. At least the layout degraded nicely on IE8. 
 
-= I don't see any menu ? =
+<h3>I don't see any menu ? </h3>
 
 You have to assign menus to the primary and secondary menu from Menus in Dashboard. 
 
-= How do I contact you? =
+<h3> How do I contact you? </h3>
 
-You can shoot me email at septianahmad[at]naisinpo[dot]com, visit my blog at seotemplates.net or mention me on twitter @fujianto.
+You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `seotemplates.net` or mention me on twitter `@fujianto`.
 
-== Screenshots ==
+<h2>Screenshots</h2>
 
-1. Standard Theme Screenshot
+* Standard Theme Screenshot
 
-== Changelog ==
+<h2> Changelog </h2>
 
-= 1.0.1 =
+<h3> 1.0.1 </h3>
 * Fixing licensing issue.
 * Bug fix for hide / show logo options on Theme customizer.
 * Removing unnecessary hardcoded text.
 * Fixing font issue.
 
-= 1.0 =
+<h3>1.0 </h3>
 * Initial Release.
