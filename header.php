@@ -39,11 +39,13 @@
                     <div class="span2 logo-wrapper clearfix">
                         <header class="website-logo">
 
-                        <?php $customizer_options = get_option('neutro_customizer'); ?>
-                          <?php if($customizer_options['display_logo'] === true ) : ?>
+                        <?php $customizer_display_logo = get_theme_mod('display_logo', true); ?>
+                        <?php $customizer_default_logo = get_theme_mod('neutro_logo_url', THEME_URI.'/images/logo.png'); ?>
 
+                          <?php if($customizer_display_logo === true ) : ?>
+                          
                             <h1 class="logo-heading">
-                              <a href="<?php echo home_url(); ?>"> <img src="<?php echo $customizer_options['neutro_logo']; ?>" alt="logo" class="logo"></a>
+                              <a href="<?php echo home_url(); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"> <img src="<?php echo $customizer_default_logo; ?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" class="logo"></a>
                             </h1>
 
                           <?php else : ?>
