@@ -22,30 +22,28 @@ function neutro_register_customizer($wp_customize){
 	/* Theme Customizer setting & control */	
 	
 	/* Display logo setting & control */
-	$wp_customize->add_setting('neutro_customizer[display_logo]', array(
-			'default'=>'0',
-			'transport'   => 'postMessage',
-			'type'=>'option' 
-		));
+	$wp_customize->add_setting('display_logo', array(
+		'default'=>'0',
+		'type' => 'theme_mod' 
+	));
 	
-	$wp_customize->add_control('neutro_customizer[display_logo]', array(
+	$wp_customize->add_control('display_logo', array(
 		'label'=> 'Display Website logo?',
 		'section'=>'neutro_logo',
-		'settings'=>'neutro_customizer[display_logo]',
+		'settings'=>'display_logo',
 		'type'=>'checkbox'	
 	));
 
 	 /*Logo upload setting &control*/	
-	$wp_customize->add_setting('neutro_customizer[neutro_logo]', array(
+	$wp_customize->add_setting('neutro_logo_url', array(
 		'default' => THEME_URI.'/images/logo.png',
-		'transport'   => 'postMessage',
-		'type' => 'option'
+		'type' => 'theme_mod'
 	));
 		
 	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'neutro_logo', array(
 		'label' => __('Upload Website logo', 'neutro'),
 		'section' => 'neutro_logo',
-		'settings' => 'neutro_customizer[neutro_logo]'
+		'settings' => 'neutro_logo_url'
 	)));
 
 
@@ -54,7 +52,7 @@ function neutro_register_customizer($wp_customize){
 		'default'=>'#3498db',
 		'transport'   => 'postMessage',
 		'sanitize_callback' => 'sanitize_hex_color',
-    	'type' =>  'option' 
+    	'type' => 'theme_mod' 
 	));
 	
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'neutro_customizer[link_color]', array( 
@@ -67,7 +65,7 @@ function neutro_register_customizer($wp_customize){
 		'default'=>'#ecf0f1',
 		'transport'   => 'postMessage',
 		'sanitize_callback' => 'sanitize_hex_color',
-    	'type' =>  'option' 
+    	'type' => 'theme_mod' 
 	));
 	
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'neutro_customizer[header_color]' , array( 
@@ -81,7 +79,7 @@ function neutro_register_customizer($wp_customize){
 		'default'=>'#2c3e50',
 		'transport'   => 'postMessage',
 		'sanitize_callback' => 'sanitize_hex_color',
-    	'type' =>  'option' 
+    	'type' => 'theme_mod' 
 	));
 	
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'neutro_customizer[secondary_menu_color]', array( 
@@ -95,7 +93,7 @@ function neutro_register_customizer($wp_customize){
 			'default'=>'#2c3e50',
 			'transport'   => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
-	    	'type' =>  'option' 
+	    	'type' => 'theme_mod' 
 		));
 	
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'neutro_customizer[footer_color]', array( 
