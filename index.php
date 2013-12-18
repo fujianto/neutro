@@ -1,7 +1,7 @@
 <?php get_header(); // Loads the header.php template. ?>
     <section class="container" id="main-container">
     	<div class="row">
-        	<div class="span8">
+        	<div class="span8" id="content-wrapper">
 				
 				<?php get_template_part( 'breadcrumbs' ); // Loads the breadcrumbs.php template. ?>
 				
@@ -18,9 +18,9 @@
 				<?php if(is_singular() ) comments_template(); // Loads the comments.php template. ?>
 
 			</div>
-			<!-- End .span8 -->
+			<!-- End .span8 #content-wrapper -->
 
-			<div class="span4">
+			<div class="span4" id="sidebar-wrapper">
 				<div class="row">
 				
 					<?php get_sidebar( 'primary' ); // Loads the sidebar-primary.php template. ?>
@@ -31,7 +31,7 @@
 
 				</div>
 			</div>
-			<!-- End .span4 -->
+			<!-- End .span4 #sidebar-wrapper -->
 		</div>
 		<!-- End .row -->
 	</section>
