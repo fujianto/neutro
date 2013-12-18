@@ -1,4 +1,4 @@
-	<div <?php neutro_wrapper_attribute(); ?>>
+	<div <?php ( function_exists('neutro_wrapper_attribute') ? neutro_wrapper_attribute() : '' ) ?>>
 
 		<?php if ( have_posts() ) { ?>
 
