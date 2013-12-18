@@ -1,3 +1,12 @@
+<?
+/**
+ * The template for displaying Author information on Singular.
+ *
+ * @package Neutro
+ * @subpackage Template
+ * @since 1.0
+ */
+?>
 <?php if(is_singular() ) : ?>
 
 	<div class="author-profile vcard article-author media">
