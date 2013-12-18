@@ -6,9 +6,9 @@
 
 **Requires at least**: 3.6
 
-**Tested up to**: 3.7.1
+**Tested up to**: 3.8
 
-**Stable tag**: 1.0.1
+**Stable tag**: 1.0.2
 
 **License**: GPL
 
@@ -18,7 +18,7 @@
 **Description**: A responsive modern design theme geared to unleash your website content potential. Support WordPress post formats, with specially tailored design. Built in touch ready featured content slider with configurable content options, Theme customizer and Custom css, to customize theme look and feel to match your desire.  
 
 *Neutro WordPress theme, Copyright (C) 2013 Septian Ahmad Fujianto 
-Neutro WordPress theme is licensed under the G*PL.
+Neutro WordPress theme is licensed under the GPL.
 
 <h2> Description</h2>
 
@@ -124,6 +124,17 @@ You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `
 * Standard Theme Screenshot
 
 <h2> Changelog </h2>
+
+= 1.0.2 =
+
+* Better semantic HTML. 
+* Fixing CSS bug on blockquote, video embeed and logo area.
+* Better sanitize custom CSS.
+* Using Theme Mods on Customizer.
+* Bigger logo area.
+* Larger body font for better readibility.
+* More Whitespace on Boxed area.
+* Fixing Child Theme bug.
 
 **1.0.1**
 

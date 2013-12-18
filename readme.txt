@@ -2,8 +2,8 @@
 Contributors: Septian Ahmad Fujianto
 Tags: gray, white, green, blue, two-columns, three-columns, right-sidebar, flexible-width, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 3.6
-Tested up to: 3.7.1
-Stable tag: 1.0.1
+Tested up to: 3.8
+Stable tag: 1.0.2
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -116,6 +116,16 @@ You can shoot me email at septianahmad[at]naisinpo[dot]com, visit my blog at seo
 1. Standard Theme Screenshot
 
 == Changelog ==
+
+= 1.0.2 =
+* Better semantic HTML. 
+* Fixing CSS bug on blockquote, video embeed and logo area.
+* Better sanitize custom CSS.
+* Using Theme Mods on Customizer.
+* Bigger logo area.
+* Larger body font for better readibility.
+* More Whitespace on Boxed area.
+* Fixing Child Theme bug.
 
 = 1.0.1 =
 * Fixing licensing issue.
