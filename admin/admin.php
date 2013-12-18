@@ -31,7 +31,7 @@ function neutro_validate_theme_settings( $settings ) {
 
 	$settings['featured_slider_categories'] = ( ( isset( $settings['featured_slider_categories'] ) && is_array( $settings['featured_slider_categories'] ) ) ? array_map( 'absint', $settings['featured_slider_categories'] ) : array() );
 	$settings['featured_slider_display'] = ( isset( $settings['featured_slider_display'] ) ? 1 : 0 );
-	$settings['custom_css'] = ( isset( $settings['custom_css'] ) ? trim($settings['custom_css'] ) : '' );
+	$settings['custom_css'] = ( isset( $settings['custom_css'] ) ? trim(esc_textarea( neutro_sanitize($settings['custom_css']) ) ) : '' );
 
 	return $settings;
 }
@@ -102,7 +102,9 @@ function neutro_custom_css_meta_box(){
 
 	/* Settings used. */
 	$custom_css = hybrid_get_setting('custom_css'); ?>
-	
+
+	<?php if(current_user_can('unfiltered_html' ) ): ?>
+
 	<table class="form-table">
 		<tr>
 			
@@ -112,10 +114,13 @@ function neutro_custom_css_meta_box(){
 		</tr>
 		<tr>
 			<td>
-				<textarea id="custom_css" name="<?php echo hybrid_settings_field_name( 'custom_css' ); ?>"  cols="30" rows="10" style="background: #f9f9f9;"><?php echo esc_textarea( hybrid_get_setting( 'custom_css' )); ?></textarea>
+				<textarea id="custom_css" name="<?php echo hybrid_settings_field_name( 'custom_css' ); ?>"  cols="30" rows="10" style="background: #f9f9f9;"><?php echo hybrid_get_setting( 'custom_css' ); ?></textarea>
 			</td>
 		</tr>
 	</table>
+	
+	<?php endif; ?>
+
 <?php
 }
 
