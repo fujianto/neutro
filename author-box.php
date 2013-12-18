@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * The template for displaying Author information on Singular.
  *
