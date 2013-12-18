@@ -18,8 +18,7 @@
 			'container_class' => 'main-menu',
 			'menu_id'         => 'menu-primary-items',
 			'menu_class'      => 'menu-items',
-			'fallback_cb'     => ''
-			
+			'fallback_cb'     => ''	
 		)
 	);
 
