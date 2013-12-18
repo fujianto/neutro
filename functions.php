@@ -20,12 +20,12 @@
  *
  * @package    Neutro
  * @subpackage Functions
- * @version    1.0
+ * @version    1.0.2
  * @since      1.0
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013, Septian Ahmad Fujianto
  * @link       http://seotemplates.net/blog/theme/neutro-wordpress-theme/
- * @license    http://www.gnu.org/licenses/gpl-2.0.html
+ * @license    http://www.gnu.org/licenses/gpl.html
  */
 
 /* Load the core theme framework. */
@@ -128,7 +128,7 @@ function neutro_theme_setup() {
 	add_action( 'wp_enqueue_scripts', 'neutro_enqueue_styles' );
 
 	/*	Set default image sizes for featured image	*/
-	add_image_size( 'featured-image', 768, 372, true );
+	add_image_size('featured-image', 768, 372, true );
 
 	/* Exclude sticky posts from home page. */
 	add_action( 'pre_get_posts', 'neutro_exclude_sticky' );
@@ -139,13 +139,20 @@ function neutro_theme_setup() {
 	/*	Hook customizer css value to wp_head  */
 	add_action('wp_head', 'neutro_custom_css');
 
+	/* Register tertiary sidebar */
+	add_action( 'widgets_init', 'neutro_register_sidebars', 11 );
+
 	/* Handle content width for embeds and images. */
 	hybrid_set_content_width( 768 );
 
-	load_theme_textdomain( 'neutro', THEME_URI. '/languages' );
 }
 
-/*	Custom css value from Theme Options */
+/**
+ * Echo the custom css value of Theme Options custom css box.
+ * 
+ * @since 1.0
+ * @return string custom css. 
+ */
 function neutro_custom_css(){
 	$custom_css = hybrid_get_setting('custom_css');
 
@@ -158,7 +165,12 @@ function neutro_custom_css(){
 <?php endif;
 }
 
-/*	Customizer css value  */
+/**
+ * Echo Theme customizer css value.
+ * 
+ * @since 1.0
+ * @return string Theme customizer css.
+ */
 function neutro_customizer_css(){
 	$customizer_options = get_option( 'neutro_customizer' ); 
 
@@ -192,10 +204,13 @@ function neutro_customizer_live_preview() {
                 true
         );
 
-} // end neutro_customizer_live_preview
+} 
 
-
-
+/**
+ * Enqueue javascripts for WordPress theme Frontend.
+ * 
+ * @since 1.0
+ */
 function neutro_enqueue_scripts() {
 	wp_enqueue_script( 'modernizr', hybrid_locate_theme_file( array('js/min/modernizr.min.js') ) , 
 		array('jquery'), '2.6.2', false );
@@ -243,6 +258,11 @@ function neutro_enqueue_scripts() {
 	
 }
 
+/**
+ * Enqueue CSS for WordPress theme Frontend.
+ * 
+ * @since 1.0
+ */
 function neutro_enqueue_styles() {
 	wp_enqueue_style( 'bootstrap', hybrid_locate_theme_file( array('css/bootstrap.css') ), 
 		'false', false, 'all' );
@@ -260,9 +280,14 @@ function neutro_enqueue_styles() {
 		'false', array('bootstrap', 'bootstrap-responsive', 'genericons') , 'all' );
 }
 
-/***  Add custom class on post_class ***/
-add_filter( 'post_class', 'neutro_post_class');
 
+/**
+ * Add custom class on post_class
+ * 
+ * @since 1.0
+ * @param type $classes 
+ * @return string filter class
+ */
 function neutro_post_class($classes){	
 	/*	Don't add .item on singular post type */
 	if(!is_singular() && !is_404() ){
@@ -272,48 +297,92 @@ function neutro_post_class($classes){
 	return  $classes;
 }
 
-/***  Add custom class on previous and next posts link ***/
-add_filter('next_post_link','add_class_next_post_link',10,1);
+add_filter( 'post_class', 'neutro_post_class');
 
+
+/**
+ * Add custom class on next posts link
+ * 
+ * @since 1.0
+ * @param string $html 
+ * @return string filtered html 
+ */
 function add_class_next_post_link($html){
     $html = str_replace('<a','<a class="next"',$html);
     return $html;
 }
 
-add_filter('previous_post_link','add_class_previous_post_link',10,1);
+add_filter('next_post_link','add_class_next_post_link',10,1);
 
+
+/**
+ * Add custom class on previous posts link
+ * 
+ * @since 1.0
+ * @param string $html 
+ * @return string filtered html
+ */
 function add_class_previous_post_link($html){
     $html = str_replace('<a','<a class="prev"',$html);
     return $html;
 }
 
-/***  Add custom class on previous and next comment link ***/
-add_filter( 'previous_comments_link_attributes', 'neutro_previous_comments_link' );
+add_filter('previous_post_link','add_class_previous_post_link',10,1);
 
+
+/**
+ * Add custom attributes on previous comment link
+ * 
+ * @since 1.0
+ * @param string $class 
+ * @return string new attribute
+ */
 function neutro_previous_comments_link($class){
 	$class = 'class="prev" ';
     return $class;
 }
 
-add_filter( 'next_comments_link_attributes', 'neutro_next_comments_link' );
+add_filter( 'previous_comments_link_attributes', 'neutro_previous_comments_link' );
 
+/**
+ *Add custom attributes on next comment link
+ * 
+ * @since 1.0
+ * @param string $class 
+ * @return string new attribute
+ */
 function neutro_next_comments_link($class){
 	$class = 'class="next" ';
     return $class;
 }
 
-/*** Custom args for comment area ***/
-add_filter( 'neutro_list_comments_args', 'add_neutro_list_comments_args');
+add_filter( 'next_comments_link_attributes', 'neutro_next_comments_link' );
 
+
+/**
+ * Custom args for comment area avatar size
+ * 
+ * @since 1.0
+ * @param array $args 
+ * @return array
+ */
 function add_neutro_list_comments_args($args){
-	 $args['avatar_size'] = '38';
+	 $args['avatar_size'] = '45';
 
 	return $args;
 }
 
-/*** Custom Footer content / footer_insert using [neutro-link] Shortcodes ***/
-add_filter('neutro_default_theme_settings', 'neutro_theme_settings');
+add_filter( 'neutro_list_comments_args', 'add_neutro_list_comments_args');
 
+
+/**
+ * Custom Footer content / footer_insert using [neutro-link] Shortcodes.
+ * This function is made in order to alter credits link to 'Neutro Theme' from default 'Neutro WordPress Theme'
+ * 
+ * @since 1.0.1
+ * @param array $settings 
+ * @return array
+ */
 function neutro_theme_settings($settings){
 	/* Set up some default variables. */
 	$settings = array();
@@ -336,9 +405,15 @@ function neutro_theme_settings($settings){
 	return $settings;
 }
 
-/***	Register tertiary sidebar ***/
-add_action( 'widgets_init', 'neutro_register_sidebars', 11 );
+add_filter('neutro_default_theme_settings', 'neutro_theme_settings');
 
+
+/**
+ * Register tertiary sidebar
+ * 
+ * @since 1.0 
+ * @return void
+ */
 function neutro_register_sidebars(){
 	register_sidebar( 
 		array( 
@@ -351,7 +426,12 @@ function neutro_register_sidebars(){
 		) );
 }
 
-/*** Set comment form args ***/
+/**
+ * Set custom comment form arguments 
+ * 
+ * @since 1.0
+ * @return array of custom comment form arguments
+ */
 function neutro_comments_args(){
 	$commenter = wp_get_current_commenter();
 	$req = get_option( 'require_name_email' );
@@ -417,6 +497,14 @@ function neutro_comments_args(){
 	return $comments_args;
 }
 
+/**
+ * Exclude sticky post from Main loop if featured slider displayed.
+ * Sticky  post will be displayed on featured slider
+ * 
+ * @since 1.0
+ * @param array $query 
+ * @return array
+ */
 function neutro_exclude_sticky( $query ) {
 	/* Exclude if is home, is main query and slider is disabled. */
 	if ( is_home() && $query->is_main_query() && hybrid_get_setting('featured_slider_display' ) != 1 ) 
@@ -427,8 +515,6 @@ function neutro_exclude_sticky( $query ) {
 /*********************************************/
 /*			Neutro Shortcode			     */
 /*********************************************/
-
-add_shortcode('neutro-link', 'neutro_theme_link_shortcode');
 
 /**
  * Shortcode to display a link to the parent theme page.
@@ -448,10 +534,61 @@ function neutro_theme_link_shortcode() {
 	return '<a class="theme-link" href="' . $themeURI . '" title="' . $link_title . '"><span>' . $link_content . '</span></a>';
 }
 
+add_shortcode('neutro-link', 'neutro_theme_link_shortcode');
+
 
 /*********************************************/
 /*			Neutro Custom Function			 */
 /*********************************************/
+
+/**
+ * Strip out malicious code before entering input to database
+ * 
+ * @since 1.0.2
+ * @link http://css-tricks.com/snippets/php/sanitize-database-inputs/
+ * 
+ * @param string $input 
+ * @return string stripped input
+ */
+function neutro_cleanInput($input) {
+ 
+  $search = array(
+    '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
+    '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
+    '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
+    '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
+  );
+ 
+    $output = preg_replace($search, '', $input);
+    return $output;
+}
+
+/**
+ * Sanitize input before entering to database
+ * 
+ * @since 1.0.2
+ * @link http://css-tricks.com/snippets/php/sanitize-database-inputs/
+ * 
+ * @param string $input 
+ * @return string sanitized inpute
+ */
+function neutro_sanitize($input) {
+
+    if (is_array($input)) {
+        foreach($input as $var=>$val) {
+            $output[$var] = sanitize($val);
+        }
+    }
+    else {
+        if (get_magic_quotes_gpc()) {
+            $input = stripslashes($input);
+        }
+        $input  = neutro_cleanInput($input);
+        $output = mysql_real_escape_string($input);
+    }
+
+    return $output;
+}
 
 /**
  * Get several images from post format gallery and show it on home / index.
@@ -515,7 +652,7 @@ function neutro_wrapper_attribute(){
 /**
  * Give post title attributes based on the availibility of Featured image from get_the_image
  * 
- * @return String of attributes.
+ * @return String of title attributes.
  */
 function neutro_title_attribute(){
 	if (neutro_has_get_the_image() ){
@@ -533,13 +670,13 @@ function neutro_title_attribute(){
 }
 
 /**
- * Check if get the image has image
+ * Check if featured image exist and successfully grabbed by get the image.
  * 
  * @return boolean
  */
 function neutro_has_get_the_image(){
 	if ( current_theme_supports( 'get-the-image' ) ){
-		// Don't print the image
+		// Prevent image to be echoed
 		$image = get_the_image(array('echo'=>false) );
 
 		if(!empty ($image) ){
@@ -551,6 +688,23 @@ function neutro_has_get_the_image(){
 	}
 }
 
+/**
+ * Set Mediaelement player width attribute with percetage
+ * 
+ * @param type $html 
+ * @return string filtered html
+ */
+function neutro_audio_shortcode( $html ){
+	return str_replace('<audio', '<audio width="100%"', $html);
+}
+
+add_filter('wp_audio_shortcode', 'neutro_audio_shortcode');
+
+/**
+ * Check if browser is Internet Explorer 8.
+ * 
+ * @return boolean true if IE 8.
+ */
 function neutro_is_ie8(){
     if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 8.') !== false) ){
         return true;
