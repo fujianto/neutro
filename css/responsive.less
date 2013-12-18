@@ -14,11 +14,12 @@
 	.item { width: 99%; }
 	.query-widget-sidebar{ width: 100%; }
 
-	.span5.menu-wrapper { width: 98%; }
-	.span2.logo-wrapper { width: 47%; padding: 1em 0; margin-bottom:1em; }
-	.website-logo{padding: 0 1em;}
-	.span5.search-wrapper { width: 47%; padding: 1em 0; margin-bottom:1em; }
-	#header-container .website-logo{text-align:  left;}
+	#menu-wrapper { width: 100%;  display:block; float: left; margin-left: 0; margin-bottom: 1.5em}
+	#logo-wrapper { width: 47%; display:block; float: left;}
+	#search-wrapper { width: 47%; margin-bottom:1.5em;  display:block; float: left;}
+		
+	.website-logo{text-align: left; padding: 0 1em;}
+
 
 	#mobile-main-menu-btn, #mobile-secondary-menu-btn{
 		display: block; 
@@ -38,10 +39,11 @@
 		}
 	}
 
-	#header-container{ border-bottom: 0;}
+	#header-container{ border-bottom: 0; display: block;}
+
 	.main-menu, .secondary-menu{ display: none; }
 	#secondary-menu-container{ background: @header-color !important; }
-	.secodary-menu-wrapper{ width: 98%; }
+	#secodary-menu-wrapper{ width: 98%; }
 	.mobile-main-menu ul, .mobile-secondary-menu ul{ 
 		list-style-type: none; 
 		margin: 0;
@@ -112,20 +114,24 @@
 @media only screen and (max-width: 767px) {
 	.query-widget-sidebar{ width: 100%; }
 	
-	.website-logo{padding: 0 1em;}
-	.span5.menu-wrapper { width: 100%; padding-bottom: 0.5em}
+	// .website-logo{padding: 0 1em;}
+	
 	// #secondary-menu-container{ padding-top: 0.5em;}
-	#header-container .website-logo .logo-heading {margin-top: 0.5em; }
-	.span2.logo-wrapper { width: 47%; padding: 1em 0; float: left}
-	.span5.search-wrapper { width: 47%; padding: 1em 0 1.5em 0; float: left}
-	#header-container .website-logo{text-align:  left;}
+	.logo-heading {margin: 0 0 1.5em 0;}
+
+	#menu-wrapper { width: 100%;  display:block; float: left; margin-left: 0; margin-bottom: 1.5em}
+	#logo-wrapper { width: 47%; display:block; float: left;}
+	#search-wrapper { width: 47%; margin-bottom:1.5em;  display:block; float: left;}
+
+	// #header-container .website-logo{text-align:  left;}
+	#header-container{ border-bottom: 0; display: block;}
 	.logo{ display: block; margin-left: auto; margin-right: auto; }
 	
 	@import "mobile-menu.less";
 
 	#top-search{ float: none; width:100%; }
 	#search{ width:50%; }
-	
+	#search-menu { margin-top: 1em; }
 	.search-widget form { 
 		text-align: center;  
 		margin: 0 auto;  
@@ -142,12 +148,18 @@
 	.item { width: 46% }
 	.query-widget-sidebar{ width: 100%; }
 	
-	#header-container .logo-wrapper { margin-top: 0; padding: 0;}
-	#header-container .website-logo{text-align:  left;}
+	#logo-wrapper { margin-top: 0; padding: 0;}	
+
 	#top-search { float: none; width:100%; }
 	.search-widget{ display:none; }
 	#search-menu{ display: block; }
 	
+	.text-logo-group { margin-top: 0; margin-bottom: 1.5em; margin-left: 1.5em; }
+
+	.website-logo{text-align: left;}
+	.website-logo .text-logo { font-size: 18px; }
+	.website-logo .text-tagline { font-size: 12px; }
+
 	.search-widget form { 
 		text-align: center;  
 		margin: 0 auto;  
@@ -169,17 +181,20 @@
 @media only screen and (max-width: 479px) {
 	.item { width: 99%; }
 
-	#header-container .logo-wrapper { margin-top: 0; padding: 0;}
+	// #header-container .logo-wrapper { margin-top: 0; padding: 0;}
 	#header-container .website-logo{text-align:  left;}
 	.search-widget{ display:none; }
-	#search-menu{ display: block; }
-	.span2.logo-wrapper { width: 70%; float: left}
-	#header-container .website-logo .logo-heading {margin-top: 0.5em; }
-	.span5.search-wrapper { width: 25%;  float: left}
-	.btn-inside{ font-size: 11px; line-height: 12px; padding: 4px 8px; }
+	#search-menu{ display: block; margin-top: 1em;}
+
+	#logo-wrapper { margin-top: 0; padding: 0; width: 70%; float: left}
 	
-	#header-container .website-logo .text-logo { font-size: 18px; }
-	#header-container .website-logo .text-tagline { font-size: 12px; }
+	.logo-heading {margin: 0; margin-bottom: 1em}
+	#search-wrapper { width: 25%;  float: left}
+	.btn-inside{ font-size: 14px; line-height: 12px; padding: 4px 8px; }
+	
+	.text-logo-group { margin-top: 0; margin-bottom: 1.5em; margin-left: 1.5em; }
+	.website-logo .text-logo { font-size: 18px; }
+	.website-logo .text-tagline { font-size: 12px; }
 
 	.search-widget form { 
 		text-align: center;  
