@@ -24,49 +24,56 @@
 
         <div class="header-wrapper">
 
-          <div id="header-container">
               <header class="container">
+
                 <div class="row">
-                    <div class="span5 menu-wrapper clearfix">
+                    <div id="header-container" class="span12">
 
-                      <a href="" class="btn btn-neutro" id="mobile-main-menu-btn"><span><?php _e( 'Menu', 'neutro' ); ?></span></a>
-                      <nav class="mobile-main-menu"></nav>
+                      <div class="span4 clearfix" id="menu-wrapper">
 
-                      <?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
+                        <a href="" class="btn btn-neutro" id="mobile-main-menu-btn"><span><?php _e( 'Menu', 'neutro' ); ?></span></a>
+                        <nav class="mobile-main-menu"></nav>
+
+                        <?php get_template_part( 'menu', 'primary' ); // Loads the menu-primary.php template. ?>
+
+                      </div>
+
+                      <!--End span 4 navigation-->
+                      <div class="span4 clearfix" id="logo-wrapper">
+                          <header class="website-logo">
+
+                          <?php $customizer_display_logo = get_theme_mod('display_logo', true); ?>
+                          <?php $customizer_default_logo = get_theme_mod('neutro_logo_url', THEME_URI.'/images/logo.png'); ?>
+
+                            <?php if($customizer_display_logo === true ) : ?>
+                            
+                              <h1 class="logo-heading">
+                                <a href="<?php echo home_url(); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"> <img src="<?php echo $customizer_default_logo; ?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" class="logo"></a>
+                              </h1>
+
+                            <?php else : ?>
+                   
+                              <hgroup class="text-logo-group">
+                                <h1 class="text-logo"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
+                                <h2 class="text-tagline"><?php bloginfo('description'); ?> </h2>
+                              </hgroup>
+                            
+                            <?php endif; ?>
+
+                          </header>
+                      </div>
+
+                      <!--End  logo-->
+                      <div class="span4 clearfix" id="search-wrapper">
+
+                        <a class="btn btn-inside pull-right" id="search-menu" href="#"><i class="icon-search icon-white"></i></a>
+                        <?php get_search_form(); ?>
+                      
+                      </div>
+                      <!--End  search-->
 
                     </div>
-                    <!--End span 4 navigation-->
-                    <div class="span2 logo-wrapper clearfix">
-                        <header class="website-logo">
-
-                        <?php $customizer_display_logo = get_theme_mod('display_logo', true); ?>
-                        <?php $customizer_default_logo = get_theme_mod('neutro_logo_url', THEME_URI.'/images/logo.png'); ?>
-
-                          <?php if($customizer_display_logo === true ) : ?>
-                          
-                            <h1 class="logo-heading">
-                              <a href="<?php echo home_url(); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>"> <img src="<?php echo $customizer_default_logo; ?>" alt="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" class="logo"></a>
-                            </h1>
-
-                          <?php else : ?>
-                 
-                            <hgroup class="text-logo-group">
-                              <h1 class="text-logo"><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a></h1>
-                              <h2 class="text-tagline"><?php bloginfo('description'); ?> </h2>
-                            </hgroup>
-                          
-                          <?php endif; ?>
-
-                        </header>
-                    </div>
-                    <!--End span2 logo-->
-                    <div class="span5 search-wrapper clearfix">
-
-                      <a class="btn btn-inside pull-right" id="search-menu" href="#"><i class="icon-search icon-white"></i></a>
-                      <?php get_search_form(); ?>
-                    
-                    </div>
-                    <!--End span4 search-->
+                    <!--End header container-->
                     
                 </div>
                 <!--End row header-->
@@ -75,13 +82,11 @@
 
               </header>
               <!--End header-->
-          </div>
-          <!--End header container-->
          
           <div id="secondary-menu-container">
             <div class="container">
               <div class="row">
-                <div class="span12 secodary-menu-wrapper">
+                <div class="span12" id="secodary-menu-wrapper">
 
                   <a href="" class="btn btn-neutro" id="mobile-secondary-menu-btn"><span><?php _e( 'Menu', 'neutro' ); ?></span></a>
                   <nav class="mobile-secondary-menu"></nav>
