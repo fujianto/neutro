@@ -10,7 +10,7 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 	
 		<?php get_template_part( 'comments-loop' ); // Loads the comments-loop.php template. ?>
 
-		<?php comment_form( neutro_comments_args() ); // Loads the comment form. ?>
+		<?php comment_form( (function_exists('neutro_comments_args') ? neutro_comments_args() : '' ) ); // Loads the comment form. ?>
 
 	</div>
 

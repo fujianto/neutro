@@ -14,7 +14,7 @@
 
 		<header class="entry-header">
 			
-			<h1 <?php neutro_title_attribute(); ?>> <?php single_post_title(); ?> </h1>
+			<h1 <?php ( function_exists('neutro_title_attribute') ? neutro_title_attribute() : '' ) ?>> <?php single_post_title(); ?> </h1>
 
 			<?php if (neutro_has_get_the_image() ) if (comments_open() && !post_password_required()) 
 				comments_popup_link('0', '1', '%','comment-counter'); ?>
@@ -46,7 +46,8 @@
 					<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
 
 					<section class="gallery-thumbnail"><ul>
-						<?php neutro_get_several_gallery_thumbnail(3); ?>
+					
+						<?php ( function_exists('neutro_get_several_gallery_thumbnail') ? neutro_get_several_gallery_thumbnail(3) : '' ) ?>
 
 					</ul></section>
 			

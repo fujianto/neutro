@@ -15,7 +15,7 @@
 
 			<?php echo ( $audio = hybrid_media_grabber( array( 'type' => 'audio', 'split_media' => true ) ) ); ?>
 
-			<h1 <?php neutro_title_attribute(); ?>> <?php single_post_title(); ?> </h1>
+			<h1 <?php ( function_exists('neutro_title_attribute') ? neutro_title_attribute() : '' ) ?>> <?php single_post_title(); ?> </h1>
 
 		</header><!-- .entry-header -->
 

@@ -14,7 +14,7 @@
 
 		<header class="entry-header">
 
-			<h1 <?php neutro_title_attribute(); ?>> <?php single_post_title(); ?> </h1>
+			<h1 <?php ( function_exists('neutro_title_attribute') ? neutro_title_attribute() : '' ) ?>> <?php single_post_title(); ?> </h1>
 
 		</header><!-- .entry-header -->
 
@@ -40,24 +40,16 @@
 					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
 				</header><!-- .entry-header -->
 				
-				<?php if ( has_excerpt() ) { ?>
+				<div class="entry-summary">
+					<?php the_excerpt(); ?>
+				</div><!-- .entry-summary -->
 
-					<div class="entry-summary">
-						<?php the_excerpt(); ?>
-					</div><!-- .entry-summary -->
+				<footer class="entry-meta">
+					<?php echo apply_atomic_shortcode( 'entry_byline', '<p class="article-meta-extra">' . __( '[entry-author] | <a href="' . get_permalink() . '"> [entry-published]</a> | [entry-terms before="In " taxonomy="category"] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'neutro' ) . '</p>' ); ?>
+					
+				</footer><!-- .entry-footer -->
 
-				<?php } else { ?>
-
-					<div class="entry-summary">
-						<?php the_content( __( 'Read more <span class="meta-nav">&rarr;</span>', 'neutro' ) ); ?>
-					</div><!-- .entry-summary -->
-
-					<footer class="entry-meta">
-						<?php echo apply_atomic_shortcode( 'entry_byline', '<p class="article-meta-extra">' . __( '[entry-author] | <a href="' . get_permalink() . '"> [entry-published]</a> | [entry-terms before="In " taxonomy="category"] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'neutro' ) . '</p>' ); ?>
-						
-					</footer><!-- .entry-footer -->
-
-				<?php } ?>
+				
 	
 			</article><!-- .hentry -->
 

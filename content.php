@@ -16,9 +16,9 @@
 
 		<header class="entry-header">
 			
-			<h1 <?php neutro_title_attribute(); ?>> <?php single_post_title(); ?> </h1>
+			<h1 <?php ( function_exists('neutro_title_attribute') ? neutro_title_attribute() : '' ) ?>> <?php single_post_title(); ?> </h1>
 		
-			<?php if (neutro_has_get_the_image() ) if (comments_open() && !post_password_required()) 
+			<?php if ( (function_exists('neutro_has_get_the_image') ? neutro_has_get_the_image() : '' ) ) if (comments_open() && !post_password_required()) 
 				comments_popup_link('0', '1', '%','comment-counter'); ?>
 
 				<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'featured-image', 'width' => 768, 'height' => 372, 'image_scan' => 'true', 'image_class' => 'featured-thumbnail', 'before' => '<figure>', 'after' => '</figure>' ) ); ?>	

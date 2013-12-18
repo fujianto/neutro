@@ -14,7 +14,7 @@
 
 		<header class="entry-header">
 
-			<h1 <?php neutro_title_attribute(); ?>> <?php single_post_title(); ?> </h1>
+			<h1 <?php ( function_exists('neutro_title_attribute') ? neutro_title_attribute() : '' ) ?>> <?php single_post_title(); ?> </h1>
 
 		</header><!-- .entry-header -->
 
