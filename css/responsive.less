@@ -109,7 +109,42 @@
 		input{padding-left: 3px}
 	}
 	.comment-area .comments-nav .center{ width: 28%; }
+
+	.breadcrumb-trail.breadcrumbs {
+		padding-left: 1em;
+		margin-bottom: 1em;
+		font-size: 13px;
+		line-height: 1.6em;
+	}
+
+	.single-content{ 
+		.entry-header{ 
+			.title, .entry-title{ margin-top: 0; margin-bottom: 1.5em; font-size: 17px;}
+			.single-content .entry-header .entry-title{ width: 75%;}
+		}
+
+		.entry-content{
+			padding: 0 1em;
+			p, ul li, ol li, a, dl dt, dl dd, blockquote, tr,td{
+				font-size: 13px; line-height: 1.6em;
+			}
+		} 
+		.single-entry-meta{
+			padding: 1em 1.8em;
+			.footer-items li{padding-left: 0;} 
+		} 
+	}
+		
+	.article-author .author-detail p{font-size: 13px; line-height: 1.6em;}
+
+	.comment-area{
+		padding: 1em;
+		p, ul li, ol li, a, dl dt, dl dd, blockquote, tr,td{
+			font-size: 13px; line-height: 1.6em;
+		}
+	}
 }
+
 
 @media only screen and (max-width: 767px) {
 	.query-widget-sidebar{ width: 100%; }
@@ -137,6 +172,7 @@
 		margin: 0 auto;  
 		.input-append{ width: 100%; }
 	}
+
 	.comment-area #respond .comment-form .input{ 
 		width: 100%;
 		input{padding-left: 3px}
@@ -171,9 +207,44 @@
 		input{padding-left: 3px}
 	}
 
-	.single-content .entry-header .entry-title{ position: inherit; margin-top: 0; width: 80%;}
+	.single-content .entry-header .entry-title{ position: inherit; margin-top: 0; width: 75%;}
+	.breadcrumb-trail.breadcrumbs {
+		padding-left: 1em;
+		margin-bottom: 1em;
+		font-size: 13px;
+		line-height: 1.6em;
+	}
+
+	.single-content{ 
+		.entry-header{ 
+			.title, .entry-title{ position: inherit; margin-top: 0; margin-bottom: 1.5em; font-size: 17px;}
+		}
+		// .comment-counter{
+		// 	display: none;
+		// }
+
+		.entry-content{
+			padding: 0 1em;
+			p, ul li, ol li, a, dl dt, dl dd, blockquote, tr,td{
+				font-size: 13px; line-height: 1.6em;
+			}
+		} 
+		.single-entry-meta{
+			padding: 1em 1.8em;
+			.footer-items li{padding-left: 0;} 
+		} 
+	}
+	
+	.article-author .author-detail p{font-size: 13px; line-height: 1.6em;}
+
 	.footer-container {
 		.copyright, .credit{ float: none; text-align: center; }	
+	}
+	.comment-area{
+		padding: 1em;
+		p, ul li, ol li, a, dl dt, dl dd, blockquote, tr,td{
+			font-size: 13px; line-height: 1.6em;
+		}
 	}
 	.comment-area .comments-nav .center{ width: 28%; }
 }
@@ -208,13 +279,56 @@
 		input{padding-left: 3px}
 	}
 
+	.comment-area{
+		padding: 1em;
+		p, ul li, ol li, a, dl dt, dl dd, blockquote, tr,td{
+			font-size: 13px; line-height: 1.6em;
+		}
+	}
+
+
 	.flex-caption { position: relative; margin: 0; font-size: 1.2em;}
 	.flex-direction-nav a:before{ font-size: 20px; padding: 0 4px}
 	.flex-direction-nav a{ width: 20px; height: 20px;}
 
-	.single-content .entry-header .entry-title{ position: inherit; margin-top: 0; width: 70%; margin-bottom: 1.5em;}
-	.single-content .single-entry-meta .footer-items li{padding-left: 0;}
+	.breadcrumb-trail.breadcrumbs {
+		padding-left: 1em;
+		margin-bottom: 1em;
+		font-size: 13px;
+		line-height: 1.6em;
+	}
+
+	.single-content{ 
+		.entry-header{ 
+			.title, .entry-title{ position: inherit; margin-top: 0; margin-bottom: 1.5em; font-size: 17px;}
+		}
+		.comment-counter{
+			display: none;
+		}
+
+		.entry-content{
+			padding: 0 1em;
+			p, ul li, ol li, a, dl dt, dl dd, blockquote, tr,td{
+				font-size: 13px; line-height: 1.6em;
+			}
+		} 
+		.single-entry-meta{
+			padding: 1em 1.8em;
+			.footer-items li{padding-left: 0;} 
+		} 
+	}
+		
+	.article-author .author-detail p{font-size: 13px; line-height: 1.6em;}
+
 	.articles-pager .prev .arrow { margin-right: 8px; }
+	.articles-pager .txt{ font-size: 1.2em;}
+
+	.comment-area{
+		padding: 1em;
+		p, ul li, ol li, a, dl dt, dl dd, blockquote, tr,td{
+			font-size: 13px; line-height: 1.6em;
+		}
+	}
 	.comment-area #respond .comment-form textarea { height: 100px; }
 
 	.footer-container {
