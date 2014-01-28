@@ -707,6 +707,8 @@ input[type="color"]:focus {
 .flexslider-thumb {
   border: 0;
   padding: 0;
+  width: auto;
+  max-width: 100%;
 }
 
 /******** Slider  ********/
@@ -1000,6 +1002,7 @@ section[id*="query-post"] .widget {
 .single-content .entry-header {
   position: relative;
   margin-bottom: 1.5em;
+  background: #2c3e50;
 }
 
 .single-content .comment-counter {

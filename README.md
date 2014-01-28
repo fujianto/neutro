@@ -125,7 +125,7 @@ You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `
 
 <h2> Changelog </h2>
 
-= 1.0.2 =
+**1.0.2**
 
 * Better semantic HTML. 
 * Fixing CSS bug on blockquote, video embeed and logo area.
