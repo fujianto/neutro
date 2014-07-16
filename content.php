@@ -21,7 +21,8 @@
 			<?php if ( (function_exists('neutro_has_get_the_image') ? neutro_has_get_the_image() : '' ) ) if (comments_open() && !post_password_required()) 
 				comments_popup_link('0', '1', '%','comment-counter'); ?>
 
-				<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'featured-image', 'width' => 768, 'height' => 372, 'image_scan' => 'true', 'image_class' => 'featured-thumbnail', 'before' => '<figure>', 'after' => '</figure>' ) ); ?>	
+				<?php $featured_image = neutro_featured_image_widths();
+				if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => $featured_image['size'], 'width' => $featured_image['width'], 'height' => $featured_image['height'], 'image_scan' => 'true', 'image_class' => 'featured-thumbnail', 'before' => '<figure>', 'after' => '</figure>' ) ); ?>	
 			
 		</header><!-- .entry-header -->
 
@@ -44,7 +45,7 @@
 
 			<header class="entry-header">
 				<figure>
-					<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'small', 'width' => 370, 'height' => 231, 'image_class' => 'featured-thumbnail') ); ?>
+					<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'small', 'width' => '370px', 'height' => '231px', 'image_class' => 'featured-thumbnail') ); ?>
 				</figure>
 				<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
 			</header><!-- .entry-header -->
