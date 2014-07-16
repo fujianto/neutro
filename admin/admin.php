@@ -31,7 +31,7 @@ function neutro_validate_theme_settings( $settings ) {
 
 	$settings['featured_slider_categories'] = ( ( isset( $settings['featured_slider_categories'] ) && is_array( $settings['featured_slider_categories'] ) ) ? array_map( 'absint', $settings['featured_slider_categories'] ) : array() );
 	$settings['featured_slider_display'] = ( isset( $settings['featured_slider_display'] ) ? 1 : 0 );
-	$settings['custom_css'] = ( isset( $settings['custom_css'] ) ? trim(esc_textarea( neutro_sanitize($settings['custom_css']) ) ) : '' );
+	$settings['custom_css'] = ( isset( $settings['custom_css'] ) ? trim(esc_textarea( neutro_sanitize( $settings['custom_css']) )) : '' );
 
 	return $settings;
 }
