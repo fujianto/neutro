@@ -1,0 +1,63 @@
+/*
+Styles for older IE versions (previous to IE10).
+*/
+
+
+/******** Masonry Home  ********/
+.layout-default, .layout-2c-r{
+	.item {
+	    width: 48%;
+	 }
+}
+
+.layout-1c{
+	.item {
+		width: 31%;
+	}
+ }
+
+
+ /*********************		Responsive styles	 ***********************/
+
+@media only screen and (max-width: 1199px){
+	.layout-default, .layout-2c-r{
+		.item { width: 46%; }
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	.layout-1c{
+		.item {
+			width: 30%;
+		}
+	 }
+	 .layout-default, .layout-2c-r{
+		.item { width: 99%; }
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.layout-default, .layout-2c-r{
+		.item { width: 46% }
+	}
+	.layout-1c{
+		.item {
+			width: 46%;
+		}
+	 }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	.layout-default, .layout-2c-r{
+		.item { width: 46% }
+	}
+
+
+
+}
+
+@media only screen and (max-width: 479px) {
+	.layout-default, .layout-2c-r, .layout-1c{
+		.item { width: 99%; }
+	}
+}
