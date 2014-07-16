@@ -19,7 +19,8 @@
 			<?php if (neutro_has_get_the_image() ) if (comments_open() && !post_password_required()) 
 				comments_popup_link('0', '1', '%','comment-counter'); ?>
 
-				<?php if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => 'featured-image', 'width' => 768, 'height' => 372, 'image_class' => 'featured-thumbnail', 'before' => '<figure>', 'after' => '</figure>' ) ); ?>
+				<?php $featured_image = neutro_featured_image_widths(); 
+				if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => $featured_image['size'], 'width' => $featured_image['width'], 'height' => $featured_image['height'], 'image_scan' => 'true', 'image_class' => 'featured-thumbnail', 'before' => '<figure>', 'after' => '</figure>' ) ); ?>	
 		
 			
 		</header><!-- .entry-header -->
@@ -47,7 +48,7 @@
 
 					<section class="gallery-thumbnail"><ul>
 					
-						<?php ( function_exists('neutro_get_several_gallery_thumbnail') ? neutro_get_several_gallery_thumbnail(3) : '' ) ?>
+						<?php ( function_exists('neutro_get_several_gallery_thumbnail') ? neutro_get_several_gallery_thumbnail(3, 'medium') : '' ) ?>
 
 					</ul></section>
 			
