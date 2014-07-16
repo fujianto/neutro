@@ -6,7 +6,7 @@ function gutterSize(){
     return 30;
   }
   else{
-    return 26;
+    return 15;
   }
   
 }
@@ -21,7 +21,7 @@ jQuery( function() {
         itemSelector : '.item',
         bindResize : true,
         // columnWidth: container.querySelector('.item'), 
-        gutterWidth : 10
+        gutterWidth : gutterSize()
     });
   });
   

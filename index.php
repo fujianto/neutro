@@ -19,19 +19,23 @@
 
 			</div>
 			<!-- End .span8 #content-wrapper -->
+					
+			<?php if ( !in_array( get_theme_mod( 'theme_layout' ), array( '1c' ) ) ) : // If not a one-column layout. ?>
 
-			<div class="span4" id="sidebar-wrapper">
-				<div class="row">
-				
-					<?php get_sidebar( 'primary' ); // Loads the sidebar-primary.php template. ?>
-							
-					<?php get_sidebar( 'secondary' ); // Loads the sidebar-secondary.php template. ?>
+				<div class="span4" id="sidebar-wrapper">
+					<div class="row">
+					
+						<?php get_sidebar( 'primary' ); // Loads the sidebar-primary.php template. ?>
+								
+						<?php get_sidebar( 'secondary' ); // Loads the sidebar-secondary.php template. ?>
 
-					<?php get_sidebar( 'tertiary' ); // Loads the sidebar-tertiary.php template. ?>
+						<?php get_sidebar( 'tertiary' ); // Loads the sidebar-tertiary.php template. ?>
 
+					</div>
 				</div>
-			</div>
-			<!-- End .span4 #sidebar-wrapper -->
+				<!-- End .span4 #sidebar-wrapper -->
+			<?php endif; // End widgets check. ?>
+			
 		</div>
 		<!-- End .row -->
 	</section>

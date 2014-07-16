@@ -49,7 +49,7 @@ function neutro_theme_setup() {
         require_once(trailingslashit(get_template_directory()) . 'admin/customizer.php' );
 
     // Enables settings page
-    add_theme_support( 'hybrid-core-theme-settings', array( 'footer', 'about') ); 
+    add_theme_support( 'hybrid-core-theme-settings', array('about', 'footer') ); 
 
 	/* Register menus. */
 	add_theme_support( 
@@ -121,14 +121,20 @@ function neutro_theme_setup() {
 		array( 'default-color' => '#f9f9f9' )
 	);
 
+	/* Theme layouts. */
+	add_theme_support( 'theme-layouts', array( '1c', '2c-r') );
+
 	/* Load custom scripts. */
 	add_action( 'wp_enqueue_scripts', 'neutro_enqueue_scripts' );
 
 	/*	Load custom styles.	*/
 	add_action( 'wp_enqueue_scripts', 'neutro_enqueue_styles' );
 
-	/*	Set default image sizes for featured image	*/
+	/*	Set default image sizes for featured image 2c-r	*/
 	add_image_size('featured-image', 768, 372, true );
+
+	/*	Set default image sizes for featured image 1c	*/
+	add_image_size('fullwidth-featured-image', 1198, 400, true );
 
 	/* Exclude sticky posts from home page. */
 	add_action( 'pre_get_posts', 'neutro_exclude_sticky' );
@@ -143,8 +149,10 @@ function neutro_theme_setup() {
 	add_action( 'widgets_init', 'neutro_register_sidebars', 11 );
 
 	/* Handle content width for embeds and images. */
-	hybrid_set_content_width( 768 );
+	//hybrid_set_content_width( 768 );
 
+	/* Embed width/height defaults. */
+	add_filter( 'embed_defaults', 'neutro_embed_defaults' );  
 }
 
 /**
@@ -239,16 +247,14 @@ function neutro_enqueue_scripts() {
 		   	wp_enqueue_script( 'main.ie', hybrid_locate_theme_file( array('js/main.ie.js') ) , 
 				array('jquery', 'modernizr'), false, true );
 		}
-		else{
+		else if(preg_match('/(?i)msie [9]/',$_SERVER['HTTP_USER_AGENT'])){ //If IE 9 Load scripts
+			wp_enqueue_script( 'main', hybrid_locate_theme_file( array('js/main.js') ) , 
+				array('jquery', 'modernizr'), false, true );
 			wp_enqueue_script( 'imagesloaded', hybrid_locate_theme_file( array('js/min/imagesloaded.pkgd.min.js') ) , 
 				array('jquery'), '3.0.4', true );
 			wp_enqueue_script( 'masonry', hybrid_locate_theme_file( array('js/min/masonry.pkgd.min.js') ) , 
-				array('jquery'), '3.1.0', true );
-		   	wp_enqueue_script( 'main', hybrid_locate_theme_file( array('js/main.js') ) , 
-				array('jquery', 'modernizr'), false, true );
+				array('jquery'), '3.1.0', true );	
 		}
-
-		
 	}
 
 	wp_enqueue_script( 'menus', hybrid_locate_theme_file( array('js/responsive-menu.js') ) , 
@@ -278,8 +284,11 @@ function neutro_enqueue_styles() {
 	
 	wp_enqueue_style( 'main', hybrid_locate_theme_file( array('css/main.css') ), 
 		'false', array('bootstrap', 'bootstrap-responsive', 'genericons') , 'all' );
-}
 
+	// Loads the Internet Explorer specific stylesheet.
+	wp_enqueue_style( 'neutro-ie', hybrid_locate_theme_file( array('css/ie.css') ), 'false', 'all' );
+	wp_style_add_data( 'neutro-ie', 'conditional', 'lt IE 10' );
+}
 
 /**
  * Add custom class on post_class
@@ -593,36 +602,32 @@ function neutro_sanitize($input) {
 /**
  * Get several images from post format gallery and show it on home / index.
  * 
- * @param int $images_count 
- * @param string $width 
- * @param string $height 
+ * @param int $images_count Number of images that would be displayed.
+ * @param string $size Size of image attachment, default size is medium. (thumbnail, small, medium, large).
  * 
  * @return mixed
  */
-function neutro_get_several_gallery_thumbnail($images_count, $width = '372px', $height = '200px'){
+function neutro_get_several_gallery_thumbnail($images_count, $size ='medium'){
 	 /* Check if Gallery exist inside post */
     if ( get_post_gallery() ) :
         $gallery = get_post_gallery( get_the_ID(), false );
-
-        $i = 1;
+       
         /* Loop through all the image and output them one by one */
-        foreach( $gallery['src'] AS $src )
-        { 
-            ?>
+        $i = 1;
+        $ids = explode( ",", $gallery['ids'] );
 
-            <li>
-                <figure>
-	                <a href="<?php echo get_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-	                	<img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php the_title_attribute(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"/>
-	                </a>
-                </figure>
-            </li>
-            
-            <?php
-	        /* $images_count = How many image will be shown	*/
-	        if ($i++ == $images_count) 
+        foreach( $ids as $id ) {
+			$link   = get_permalink();
+			$url   = wp_get_attachment_url( $id ); //Not used for now.
+			$image  = wp_get_attachment_image( $id, $size);
+		?>	
+
+		<?php
+			$imageId = ($i % 2 == 0 ? 'even' : 'odd');
+			echo( "<li class='images-gallery' id='image-". $imageId ."'><figure><a href='$link'>" . $image . "</a></figure></li>" );
+			if ($i++ == $images_count) 
 	        	break;
-	        }
+		} 
 
     endif;			
 }
@@ -642,7 +647,7 @@ function neutro_wrapper_attribute(){
 		$attributes = 'class="single-content" ';
 	}
 
-	if(has_filter( 'add_neutro_wrapper_attribute') ){
+	if(has_filter( 'add_neutro_wrapper_attribute' ) ){
 		$attributes = apply_filters( 'add_neutro_wrapper_attribute', $attributes );
 	}
 
@@ -655,7 +660,7 @@ function neutro_wrapper_attribute(){
  * @return String of title attributes.
  */
 function neutro_title_attribute(){
-	if (neutro_has_get_the_image() ){
+	if ( neutro_has_get_the_image() ){
 		$attributes = 'class="entry-title"';
 	}
 	else{
@@ -715,6 +720,91 @@ function neutro_is_ie8(){
 }
 
 /**
+ * Decide which pages should have a one-column layout.
+ *
+ * @since 1.1
+ */ 
+function neutro_one_column() {
+
+    if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) && !is_active_sidebar( 'tertiary' ) )
+        add_filter( 'get_theme_layout', 'neutro_theme_layout_one_column' );
+}
+
+add_action( 'template_redirect', 'neutro_one_column' );	
+
+
+/**
+ * Filters 'get_theme_layout' by returning 'layout-1c'.
+ *
+ * @since 1.1
+ */
+function neutro_theme_layout_one_column( $layout ) {
+	return 'layout-1c';
+}
+
+/**
+* Image widths on different layouts - 1 column & 3 column
+*
+* @since 1.1
+* @return string image width, height and size
+*/
+function neutro_featured_image_widths() {
+
+    $layout = theme_layouts_get_layout();        
+    
+	if ( $layout == 'layout-default' || $layout == 'layout-2c-r' ) {
+                $args['width'] = '768px';
+                $args['height'] = '372px';
+                $args['size'] = 'featured-image';
+	}
+	elseif ( $layout == 'layout-1c' ) {
+	            $args['width'] = '1198px';
+	            $args['height'] = '400px';    
+	            $args['size'] = 'fullwidth-featured-image';            
+	}
+
+	return $args;    
+}
+
+/**
+ * Overwrites the default widths for embeds.  This is especially useful for making sure videos properly
+ * expand the full width on video pages.  This function overwrites what the $content_width variable handles
+ * with context-based widths.
+ *
+ * @since 1.1
+ */
+function neutro_embed_defaults( $args ) {
+
+	$layout = theme_layouts_get_layout();
+
+	if ( $layout == 'layout-default' || $layout == 'layout-2c-r' ){
+		$args['width'] = 768;
+	}
+	elseif ( 'layout-1c' == $layout ){
+		$args['width'] = 1198;
+	}
+
+	return $args;
+}
+
+/**
+ * Set content width depend on layout options.
+ * @return Integer hybrid_set_content_width width
+ */
+function neutro_set_content_width(){
+	$layout = theme_layouts_get_layout();
+
+	if ( $layout == 'layout-default' || $layout == 'layout-2c-r' ){
+		hybrid_set_content_width( 768 );
+	}
+	elseif ( 'layout-1c' == $layout ){
+		hybrid_set_content_width( 1198 );	
+	}
+}
+
+add_action( 'template_redirect', 'neutro_set_content_width' );
+
+/**
  * Push value to Associative array
  * 
  * @param array $array The target array
@@ -728,11 +818,12 @@ function neutro_array_push_assoc($array, $key, $value){
 	return $array;
 }
 
+
 /***  DEV ONLY - REMOVE IT ON RELEASE	***/
-// function pmc_dev_cachebuster( $src ) {
-// 	return add_query_arg( 'ver', time(), $src );
-// }
-// add_filter( 'style_loader_src', 'pmc_dev_cachebuster' );
-// add_filter( 'script_loader_src', 'pmc_dev_cachebuster' );
+//function pmc_dev_cachebuster( $src ) {
+//	return add_query_arg( 'ver', time(), $src );
+//}
+//add_filter( 'style_loader_src', 'pmc_dev_cachebuster' );
+//add_filter( 'script_loader_src', 'pmc_dev_cachebuster' );
 
 ?>

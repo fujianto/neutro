@@ -3,10 +3,10 @@ function gutterSize(){
   var smallTabletPotraitSize = Modernizr.mq( "screen and (min-width: 480px) and (max-width: 767px)" );
 
   if(smallTabletPotraitSize.matches){
-    return 30;
+    return 25;
   }
   else{
-    return 26;
+    return 25;
   }
   
 }
@@ -20,7 +20,7 @@ jQuery( document ).ready( function( $ ) {
     $container.masonry({
         itemSelector : '.content .item',
         bindResize : true,
-        // columnWidth: container.querySelector('.item'), 
+        //columnWidth: container.querySelector('.item'), 
         gutter: gutterSize()
     });
   });
