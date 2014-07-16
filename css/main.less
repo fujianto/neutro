@@ -495,60 +495,126 @@ input[type="color"]{
     word-break: break-all;
 }
 
-/******** Masonry Home  ********/
+/*** Masonry 1 column layout ***/
+// .layout-1c .item{
+//     width: 30%;
+// }
+
+/******** Masonry Default/ 2 column layout  ********/
+.layout-default, .layout-2c-r{
+    .content{
+        overflow: hidden;
+        column-count: 2;
+        column-gap: 25px; 
+        column-fill: auto;      
+    }
+
+    .item{
+        margin-bottom: 3em;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
+        column-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+}
+
+/******** Masonry 1 column/ fullwidth layout  ********/
+.layout-1c{
+    .content{
+        overflow: hidden;
+        // margin-bottom: 1em;
+        column-count: 3;
+        column-gap: 25px; 
+        column-fill: auto;
+        // display: inline-block;
+    }
+
+    .item{
+        margin-bottom: 3em;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
+        column-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    
+
+    .single-content{
+        .title{
+            padding: 1em 3.1em 0 3.1em;
+        }
+        .entry-content{
+            padding: 0 5em;
+        }
+    }
+
+    .single-entry-meta{
+        padding: 1em 7em;
+    }
+}
+
+/*** Hack for firefox column-break-inside ***/
+@-moz-document url-prefix() {
+   .layout-default, .layout-2c-r, .layout-1c{ 
+        .item{ display: inline-block; width: 100%;}
+    }
+}
+
+
 .item {
-    width: 48%;
+    // width: 48%;
     background: @white;
     border: 1px solid @masonBorderColor;
     margin-bottom: 3em;
     
-    figure{
-        img{
-            max-width: 100%;
-            width: 100%;
-            height: auto; 
-            .transitions(opacity, .25s, ease-in-out);  
-        }
-    }
-
-    h2 {
-        margin: 0;
-        font-size: 17px;
-        line-height: 25px;
-        margin-top:1em;
-        padding: 0 1em 0 1em;
-        font-family: @bodyHeadingFontFamily;
-        font-weight: 500;
-
-        a{
-            color: @text-color;
-            &:hover{
-                color: @link-color;
+        figure{
+            img{
+                max-width: 100%;
+                width: 100%;
+                height: auto; 
+                .transitions(opacity, .25s, ease-in-out);  
             }
         }
-    }
-    
-    .entry-meta{
-        padding-bottom: 1em;
-    }
-    
-    .entry-summary, .entry-meta{
-        padding: 13px 1.2em;
-    }
 
-    p{
-        margin: 0;
-        font-size: 13px;
-        line-height: 22px;
+        h2 {
+            margin: 0;
+            font-size: 17px;
+            line-height: 25px;
+            margin-top:1em;
+            padding: 0 1em 0 1em;
+            font-family: @bodyHeadingFontFamily;
+            font-weight: 500;
 
-        &.article-meta-extra{
-            padding-bottom: 1em;
-            font-size: 11px;
+            a{
+                color: @text-color;
+                &:hover{
+                    color: @link-color;
+                }
+            }
         }
-    }
+        
+        .entry-meta{
+            padding-bottom: 1em;
+        }
+        
+        .entry-summary, .entry-meta{
+            padding: 13px 1.2em;
+        }
 
-    blockquote{ margin-top: 0; }
-    &.sticky{ background: floralwhite; }
+        p{
+            margin: 0;
+            font-size: 13px;
+            line-height: 22px;
+
+            &.article-meta-extra{
+                padding-bottom: 1em;
+                font-size: 11px;
+            }
+        }
+
+        blockquote{ margin-top: 0; }
+        &.sticky{ background: floralwhite; }
 }
 
 .error{
@@ -663,6 +729,10 @@ section[id*="query-post"]{
     line-height: 3em;
 }
 
+
+/*** 1 column layout ***/
+.layout-1c #content-wrapper{ width: 100%; }
+
 /*** Single content ***/
 .breadcrumb-trail.breadcrumbs {
     // background: @white;
@@ -696,7 +766,7 @@ section[id*="query-post"]{
     .entry-header{
         position: relative;
         margin-bottom: 1.5em;
-        background: @secondaryMenuBackround;
+        // background: @secondaryMenuBackround;
     }
 
     .comment-counter{

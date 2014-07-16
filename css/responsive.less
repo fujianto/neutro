@@ -4,15 +4,34 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {}
 
 @media only screen and (max-width: 1199px){
-	.item { width: 47%; }
 	.query-widget-sidebar{ width: 100% }
 }
 
 @media only screen and (max-width: 959px) { }
 
 @media only screen and (min-width: 768px) and (max-width: 959px) {
-	.item { width: 99%; }
 	.query-widget-sidebar{ width: 100%; }
+	.layout-default, .layout-2c-r{
+	    .content{
+	       column-count: auto;
+	    }
+	}
+	.layout-1c{
+	    .content{
+	        overflow: hidden;
+	        column-count: 2;
+	        column-gap: 25px; 
+	        column-fill: auto;
+	    }
+	    .single-content{ 
+	    	.title{
+            	padding: 1em 1.1em 0 1.1em;
+        	}
+	    	.entry-content{
+				padding: 0 1em;
+			}
+		}
+	}
 
 	#menu-wrapper { width: 100%;  display:block; float: left; margin-left: 0; margin-bottom: 1.5em}
 	#logo-wrapper { width: 47%; display:block; float: left;}
@@ -181,7 +200,6 @@
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-	.item { width: 46% }
 	.query-widget-sidebar{ width: 100%; }
 	
 	#logo-wrapper { margin-top: 0; padding: 0;}	
@@ -214,7 +232,22 @@
 		font-size: 13px;
 		line-height: 1.6em;
 	}
-
+	.layout-1c{
+	    .content{
+	        overflow: hidden;
+	        column-count: 2;
+	        column-gap: 25px; 
+	        column-fill: auto;
+	    }
+	    .single-content{ 
+	    	.title{
+            	padding: 1em 1.1em 0 1.1em;
+        	}
+	    	.entry-content{
+				padding: 0 1em;
+			}
+		}
+	}
 	.single-content{ 
 		.entry-header{ 
 			.title, .entry-title{ position: inherit; margin-top: 0; margin-bottom: 1.5em; font-size: 17px;}
@@ -250,7 +283,6 @@
 }
 
 @media only screen and (max-width: 479px) {
-	.item { width: 99%; }
 
 	// #header-container .logo-wrapper { margin-top: 0; padding: 0;}
 	#header-container .website-logo{text-align:  left;}
@@ -298,6 +330,23 @@
 		line-height: 1.6em;
 	}
 
+	.layout-default, .layout-2c-r, .layout-1c{
+	    .content{
+	       column-count: auto;
+	    }
+	}
+
+	.layout-1c{
+		.single-content{ 
+	    	.title{
+            	padding: 1em 1.1em 0 1.1em;
+        	}
+	    	.entry-content{
+				padding: 0 1em;
+			}
+		}
+	}
+
 	.single-content{ 
 		.entry-header{ 
 			.title, .entry-title{ position: inherit; margin-top: 0; margin-bottom: 1.5em; font-size: 17px;}
@@ -318,6 +367,7 @@
 		} 
 	}
 		
+	.page-numbers.next{float: right;}
 	.article-author .author-detail p{font-size: 13px; line-height: 1.6em;}
 
 	.articles-pager .prev .arrow { margin-right: 8px; }

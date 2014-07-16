@@ -1,4 +1,6 @@
 /***  WordPress specific css  ***/
+.size-auto, .size-full, .size-large, .size-medium, .size-thumbnail { max-width: 100%; height: auto; }
+
 .aligncenter,.alignleft,.alignright, .alignnone{
     // background: @menu-color;
     border: 1px solid @masonBorderColor;
@@ -146,6 +148,13 @@
                         float: left;
                     }
                     &:nth-child(even){
+                        float: right;
+                    }
+                    // For LTE IE9
+                    &#image-odd{
+                        float: left;
+                    }
+                    &#image-even{
                         float: right;
                     }
                 }
@@ -380,3 +389,21 @@
         }
 
     }
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .wp-caption, .wp-caption .wp-caption-text, .gallery-caption, .entry-caption {
+        text-align: center;
+        line-height: 18px;
+        font-style: italic;
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .wp-caption, .wp-caption .wp-caption-text, .gallery-caption, .entry-caption {
+        text-align: center;
+        line-height: 18px;
+        font-style: italic;
+        font-size: 12px;
+    }
+}
