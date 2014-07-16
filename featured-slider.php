@@ -9,7 +9,7 @@
  * @since 1.0
  */
 ?>
-<?php if(is_home() && !is_paged() && hybrid_get_setting('featured_slider_display') != 1 ): ?>
+<?php if(is_home() && !is_paged() && hybrid_get_setting('featured_slider_display') != 1 ): ?> <!-- Fix slider no entry -->
 
 <div class="flexslider">
 
@@ -38,11 +38,13 @@
       <?php while ( $loop->have_posts() ) : $loop->the_post(); $do_not_duplicate[] = $post->ID; ?>
          
         <li>
-           <?php if ( current_theme_supports( 'get-the-image' ) ) 
-             get_the_image( 
-              array( 'size' => 'featured-image',
-                      'width' => 768,
-                      'height' => 372, 
+           <?php 
+            $featured_image = neutro_featured_image_widths();
+            if ( current_theme_supports( 'get-the-image' ) ) 
+             get_the_image(      
+              array( 'size' => $featured_image['size'],
+                      'width' => $featured_image['width'],
+                      'height' => $featured_image['height'], 
                       'image_class' => 'flexslider-thumb', 
                       'before' => '<figure>', 
                       'after' => '</figure>' ,
