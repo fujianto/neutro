@@ -127,6 +127,9 @@ function neutro_theme_setup() {
 	/* Load custom scripts. */
 	add_action( 'wp_enqueue_scripts', 'neutro_enqueue_scripts' );
 
+	/* Deregister WP scripts. */
+	add_action('wp_enqueue_scripts', 'neutro_deregister_styles');
+
 	/*	Load custom styles.	*/
 	add_action( 'wp_enqueue_scripts', 'neutro_enqueue_styles' );
 
@@ -152,8 +155,21 @@ function neutro_theme_setup() {
 	//hybrid_set_content_width( 768 );
 
 	/* Embed width/height defaults. */
-	add_filter( 'embed_defaults', 'neutro_embed_defaults' );  
+	add_filter( 'embed_defaults', 'neutro_embed_defaults' );  	 
 }
+
+
+
+add_action( 'init', 'neutro_add_editor_styles' );
+
+/**
+ * Add custom editor styles
+ * @return [type] [description]
+ */
+function neutro_add_editor_styles() {
+    add_editor_style( hybrid_locate_theme_file( array('css/editor-style.css')) );
+}
+
 
 /**
  * Echo the custom css value of Theme Options custom css box.
@@ -220,9 +236,6 @@ function neutro_customizer_live_preview() {
  * @since 1.0
  */
 function neutro_enqueue_scripts() {
-	wp_enqueue_script( 'modernizr', hybrid_locate_theme_file( array('js/min/modernizr.min.js') ) , 
-		array('jquery'), '2.6.2', false );
-
 	if(is_home() && !is_paged() && hybrid_get_setting('featured_slider_display') != 1 ){
 		wp_enqueue_script( 'flexslider', hybrid_locate_theme_file( array('js/min/jquery.flexslider-min.js') ) , 
 			array('jquery'), '2.2.0', true );
@@ -239,21 +252,20 @@ function neutro_enqueue_scripts() {
 		
 	}
 
-	if(!is_singular() ){
-		/** if it's  <= IE 8, use older version script **/
+	if(!is_singular() )
+	{
+		wp_enqueue_script( 'imagesloaded', hybrid_locate_theme_file( array('js/min/imagesloaded.pkgd.min.js') ) , 
+			array('jquery'), '3.0.4', true );
+		wp_enqueue_script('jquery-masonry');	
+		wp_enqueue_script( 'main', hybrid_locate_theme_file( array('js/main.js') ) , 
+			array('jquery'), false, true );
+
 		if(neutro_is_ie8() )
 		{
-		    wp_enqueue_script('jquery-masonry');
-		   	wp_enqueue_script( 'main.ie', hybrid_locate_theme_file( array('js/main.ie.js') ) , 
+			wp_enqueue_script( 'modernizr', hybrid_locate_theme_file( array('js/min/modernizr.min.js') ) , 
+				array('jquery'), '2.6.2', false );
+		   	wp_enqueue_script( 'main.ie', hybrid_locate_theme_file( array('js/main.js') ) , 
 				array('jquery', 'modernizr'), false, true );
-		}
-		else if(preg_match('/(?i)msie [9]/',$_SERVER['HTTP_USER_AGENT'])){ //If IE 9 Load scripts
-			wp_enqueue_script( 'main', hybrid_locate_theme_file( array('js/main.js') ) , 
-				array('jquery', 'modernizr'), false, true );
-			wp_enqueue_script( 'imagesloaded', hybrid_locate_theme_file( array('js/min/imagesloaded.pkgd.min.js') ) , 
-				array('jquery'), '3.0.4', true );
-			wp_enqueue_script( 'masonry', hybrid_locate_theme_file( array('js/min/masonry.pkgd.min.js') ) , 
-				array('jquery'), '3.1.0', true );	
 		}
 	}
 
@@ -261,7 +273,34 @@ function neutro_enqueue_scripts() {
 		array('jquery'), false, true );
 	wp_enqueue_script( 'search', hybrid_locate_theme_file( array('js/toggle-search.js') ) , 
 		array('jquery'), false, true );
+	wp_enqueue_script( 'fitvids', hybrid_locate_theme_file( array('js/jquery.fitvids.js') ) , 
+		array('jquery'), false, true );
 	
+}
+
+/**
+ * Add Fitvids options to the footer.
+ * 
+ */
+function fitvids_script_options() { 
+	echo '<script type="text/javascript">
+		jQuery(document).ready(function($) {     
+			$(".embed-wrap").fitVids(); 
+		});
+	</script>';
+} 
+add_action('wp_footer', 'fitvids_script_options');
+
+/**
+ * Deregister default media element
+ * 
+ * @since  1.1
+ */
+function neutro_deregister_styles() {
+    // wp_deregister_style( 'mediaelement' );
+    // wp_deregister_style( 'wp-mediaelement' );
+    wp_deregister_script('mediaelement');
+  	wp_enqueue_script('mediaelement', get_template_directory_uri() .'/js/min/mediaelement-and-player.fix.min.js', array( 'jquery' ), '' ,true);
 }
 
 /**
@@ -276,6 +315,7 @@ function neutro_enqueue_styles() {
 		'false', false, 'all' );
 	wp_enqueue_style( 'genericons', hybrid_locate_theme_file( array('css/genericons.css') ), 
 		'false', false, 'all' );
+	wp_enqueue_style( 'mediaelement', hybrid_locate_theme_file( array('css/mediaelement/mediaelement.min.css') ) , null, 'all' );
 
 	if(is_home() && !is_paged() && hybrid_get_setting('featured_slider_display') != 1 ){
 		wp_enqueue_style( 'flexslider', hybrid_locate_theme_file( array('css/flexslider.css') ), 
@@ -284,10 +324,7 @@ function neutro_enqueue_styles() {
 	
 	wp_enqueue_style( 'main', hybrid_locate_theme_file( array('css/main.css') ), 
 		'false', array('bootstrap', 'bootstrap-responsive', 'genericons') , 'all' );
-
-	// Loads the Internet Explorer specific stylesheet.
-	wp_enqueue_style( 'neutro-ie', hybrid_locate_theme_file( array('css/ie.css') ), 'false', 'all' );
-	wp_style_add_data( 'neutro-ie', 'conditional', 'lt IE 10' );
+	wp_enqueue_style( 'custom-style', hybrid_locate_theme_file( array('custom-style.css')), 'false', false, 'all');
 }
 
 /**
@@ -672,6 +709,38 @@ function neutro_title_attribute(){
 	}
 
 	echo $attributes;	
+}
+
+/**
+ * Give video embed  attributes based on the availibility of video playlist
+ * 
+ * @return String of video embed attributes.
+ */
+function neutro_video_embed_attribute(){
+	global $post; 
+
+	if(has_shortcode($post->post_content, 'playlist') ){
+		$attributes = 'class="embed-playlist"';
+	}
+	else{
+		$attributes = 'class="embed-wrap"';
+	}
+
+	echo $attributes;
+}
+
+/**
+ * Grab Shortcode [playlist] inside post 
+ * 
+ * @return string first Shortcode inside post
+ */
+function neutro_embed_playlist_shortcode(){
+    global $post;
+    $pattern = '\[(\[?)(playlist)(?![\w-])([^\]\/]*(?:\/(?!\])[^\]\/]*)*?)(?:(\/)\]|\](?:([^\[]*+(?:\[(?!\/\2\])[^\[]*+)*+)\[\/\2\])?)(\]?)';
+
+    if ( preg_match('/'. $pattern .'/s', $post->post_content, $matches) ){
+        return($matches[0]);
+    }
 }
 
 /**

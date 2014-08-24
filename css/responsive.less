@@ -12,17 +12,15 @@
 @media only screen and (min-width: 768px) and (max-width: 959px) {
 	.query-widget-sidebar{ width: 100%; }
 	.layout-default, .layout-2c-r{
-	    .content{
-	       column-count: auto;
-	    }
+	     .item{
+	        width: 100%;   
+    	}
 	}
 	.layout-1c{
-	    .content{
-	        overflow: hidden;
-	        column-count: 2;
-	        column-gap: 25px; 
-	        column-fill: auto;
-	    }
+	    .item{
+	        margin: 0 1.5% 3em;
+	        width: 47%;   
+    	}
 	    .single-content{ 
 	    	.title{
             	padding: 1em 1.1em 0 1.1em;
@@ -31,6 +29,9 @@
 				padding: 0 1em;
 			}
 		}
+		.comment-area{
+    		padding: 1em 2em;
+    	}
 	}
 
 	#menu-wrapper { width: 100%;  display:block; float: left; margin-left: 0; margin-bottom: 1.5em}
@@ -233,12 +234,10 @@
 		line-height: 1.6em;
 	}
 	.layout-1c{
-	    .content{
-	        overflow: hidden;
-	        column-count: 2;
-	        column-gap: 25px; 
-	        column-fill: auto;
-	    }
+	     .item{
+	        margin: 0 1.5% 3em;
+	        width: 47%;   
+    	}
 	    .single-content{ 
 	    	.title{
             	padding: 1em 1.1em 0 1.1em;
@@ -246,6 +245,9 @@
 	    	.entry-content{
 				padding: 0 1em;
 			}
+		}
+		.comment-area{
+			padding: 1em 2em;
 		}
 	}
 	.single-content{ 
@@ -330,13 +332,16 @@
 		line-height: 1.6em;
 	}
 
-	.layout-default, .layout-2c-r, .layout-1c{
-	    .content{
-	       column-count: auto;
-	    }
+	.layout-default, .layout-2c-r{
+	     .item{
+	        width: 100%;   
+    	}
 	}
 
 	.layout-1c{
+		.item{
+	        width: 100%;   
+    	}
 		.single-content{ 
 	    	.title{
             	padding: 1em 1.1em 0 1.1em;
@@ -344,6 +349,9 @@
 	    	.entry-content{
 				padding: 0 1em;
 			}
+		}
+		.comment-area{
+			padding: 1em 2em;
 		}
 	}
 

@@ -95,6 +95,17 @@ table thead th a, table th a {
     color: @darkWhite;
 }
 
+.mejs-horizontal-volume-slider {
+    visibility: hidden !important;
+}
+.singular-post{ 
+    .mejs-horizontal-volume-slider{ 
+        visibility: visible !important;
+    }
+}
+
+.wp-playlist{ border:none !important; }
+
 body{
     font-family: @bodyFontFamily;
     font-weight: normal;
@@ -125,7 +136,6 @@ input[type="search"],
 input[type="tel"],
 input[type="color"]{
     background: @darkWhite;
-
     &:focus{
         background: @white;
     }
@@ -495,69 +505,65 @@ input[type="color"]{
     word-break: break-all;
 }
 
-/*** Masonry 1 column layout ***/
-// .layout-1c .item{
-//     width: 30%;
-// }
-
 /******** Masonry Default/ 2 column layout  ********/
 .layout-default, .layout-2c-r{
+    .item, .item:before, .item:after {
+        -moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box;
+    }
     .content{
-        overflow: hidden;
-        column-count: 2;
-        column-gap: 25px; 
-        column-fill: auto;      
+        overflow: hidden;    
     }
 
     .item{
-        margin-bottom: 3em;
-        -webkit-column-break-inside: avoid;
-        -moz-column-break-inside: avoid;
-        column-break-inside: avoid;
-        break-inside: avoid;
+        margin: 0 1.5% 3em;
+        width: 47%;   
+        margin-bottom: 48px\0;
     }
     
 }
 
 /******** Masonry 1 column/ fullwidth layout  ********/
-.layout-1c{
-    .content{
-        overflow: hidden;
-        // margin-bottom: 1em;
-        column-count: 3;
-        column-gap: 25px; 
-        column-fill: auto;
-        // display: inline-block;
+.layout-1c{  
+    .item, .item:before, .item:after {
+        -moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box;
     }
-
+    .content{
+        overflow: hidden;    
+    }
     .item{
-        margin-bottom: 3em;
-        -webkit-column-break-inside: avoid;
-        -moz-column-break-inside: avoid;
-        column-break-inside: avoid;
-        break-inside: avoid;
+        margin: 0 1.65% 3em;
+        width: 30%; 
+        margin-bottom: 48px\0;
     }
     
     
 
     .single-content{
         .title{
-            padding: 1em 3.1em 0 3.1em;
+            padding: 1em 4.9em 0 4.9em;
         }
         .entry-content{
-            padding: 0 5em;
+            padding: 0 8em;
         }
     }
 
     .single-entry-meta{
-        padding: 1em 7em;
+        padding: 1em 11.5em;
+    }
+
+    .comment-area{
+        padding: 1em 8em;
     }
 }
 
 /*** Hack for firefox column-break-inside ***/
 @-moz-document url-prefix() {
    .layout-default, .layout-2c-r, .layout-1c{ 
-        .item{ display: inline-block; width: 100%;}
+        // .item{ display: inline-block; width: 100%;}
     }
 }
 
@@ -585,7 +591,7 @@ input[type="color"]{
             padding: 0 1em 0 1em;
             font-family: @bodyHeadingFontFamily;
             font-weight: 500;
-
+            
             a{
                 color: @text-color;
                 &:hover{
