@@ -14,8 +14,10 @@
 	
 		<header class="entry-header">
 
-			<div class="embed-wrap">
-				<?php echo ( $video = hybrid_media_grabber( array( 'type' => 'video', 'split_media' => true ) ) ); ?>
+			<div <?php neutro_video_embed_attribute(); ?>>
+				<?php global $post;
+					echo ( has_shortcode( $post->post_content, 'playlist' ) ? '' : $video = hybrid_media_grabber( array( 'type' => 'video', 'split_media' => true ) )  );
+				?>
 			</div>
 
 			<h1 <?php ( function_exists('neutro_title_attribute') ? neutro_title_attribute() : '' ) ?>> <?php single_post_title(); ?> </h1>
@@ -40,9 +42,10 @@
 <?php } else { ?>
 
 			<article <?php hybrid_post_attributes(); ?>>
-
-				<div class="embed-wrap">
-					<?php echo ( $video = hybrid_media_grabber( array( 'type' => 'video', 'split_media' => true ) ) ); ?>
+				<div <?php neutro_video_embed_attribute(); ?> >
+					<?php global $post;	
+						echo ( has_shortcode( $post->post_content, 'playlist' ) ? do_shortcode(neutro_embed_playlist_shortcode() ) : $video = hybrid_media_grabber( array( 'type' => 'video', 'split_media' => true )) );
+					?>
 				</div>
 
 				<header class="entry-header">

@@ -12,10 +12,13 @@
 	<article <?php hybrid_post_attributes(); ?>>
 
 		<header class="entry-header">
+			<div class="audio-shortcode-wrap">
+				<?php global $post;				
+					echo ( has_shortcode( $post->post_content, 'audio' ) ? $audio = hybrid_media_grabber( array( 'type' => 'audio', 'split_media' => true ) )  : ''  );
+				?>
+			</div>
 
-			<?php echo ( $audio = hybrid_media_grabber( array( 'type' => 'audio', 'split_media' => true ) ) ); ?>
-
-			<h1 <?php ( function_exists('neutro_title_attribute') ? neutro_title_attribute() : '' ) ?>> <?php single_post_title(); ?> </h1>
+			<h1 class="title"> <?php single_post_title(); ?> </h1>
 
 		</header><!-- .entry-header -->
 
@@ -39,7 +42,12 @@
 			<article <?php hybrid_post_attributes(); ?>>	
 
 				<header class="entry-header">
-					<?php echo ( $audio = hybrid_media_grabber( array( 'type' => 'audio', 'split_media' => true ) ) ); ?>
+					<div class="audio-shortcode-wrap">
+						<?php global $post;							
+							$audioShortcode = neutro_embed_playlist_shortcode() ;
+							echo ( has_shortcode( $post->post_content, 'playlist' ) ? do_shortcode($audioShortcode)  : $audio = hybrid_media_grabber( array( 'type' => 'audio', 'split_media' => true ) )  );
+						?>
+					</div>
 					<?php the_title( '<h2 class="entry-title"><a href="' . get_permalink() . '">', '</a></h2>' ); ?>
 				</header><!-- .entry-header -->
 
