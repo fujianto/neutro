@@ -1,27 +1,22 @@
-// Masonry JS
-function gutterSize(){
-  var smallTabletPotraitSize = Modernizr.mq( "screen and (min-width: 480px) and (max-width: 767px)" );
-
-  if(smallTabletPotraitSize.matches){
-    return 25;
-  }
-  else{
-    return 25;
-  }
-  
-}
-
+// MasonryJS
+ 
 // Masonry options
+ 
+jQuery(document).ready(function($) {
 
-jQuery( document ).ready( function( $ ) {
-  var $container = jQuery('#container');
+  function masonry() {
+     //masonry
+    var $container = jQuery('#container');
+    var container = document.querySelector('#container');
 
-  $container.imagesLoaded( function() {
-    $container.masonry({
-        itemSelector : '.content .item',
-        bindResize : true,
-        //columnWidth: container.querySelector('.item'), 
-        gutter: gutterSize()
+    imagesLoaded( container, function() {
+      var msnry = new Masonry( container, {
+        itemSelector: '.content .item',
+        columnWidth: '.content .item'
+      });
     });
-  });
+  };
+  
+  masonry();
+    
 });
