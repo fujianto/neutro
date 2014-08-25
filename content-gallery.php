@@ -48,7 +48,7 @@
 
 					<section class="gallery-thumbnail"><ul>
 					
-						<?php ( function_exists('neutro_get_several_gallery_thumbnail') ? neutro_get_several_gallery_thumbnail(3, 'medium') : '' ) ?>
+						<?php ( function_exists('neutro_get_several_gallery_thumbnail') ? neutro_get_several_gallery_thumbnail(3) : '' ) ?>
 
 					</ul></section>
 			
