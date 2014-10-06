@@ -40,6 +40,7 @@ Activiation and Use
 All the theme files, scripts and images are copyrighted to Septian Ahmad Fujianto and licensed under GNU General Public License.
 The exceptions to this license are as follows:
 
+* Fitvids.js - Copyright 2013, Chris Coyier, Thierry Koblentz. Released under the WTFPL license - http://sam.zoy.org/wtfpl/
 * Droid Serif - copyrighted by Steve Matteson and licensed under Apache License v2.0.
 * Genericons - copyrighted by Automattic and licensed under GPLv2. 
 * Font Awesome - copyrighted by Dave Gandy and licensed under SIL OFL 1.1.
@@ -118,6 +119,16 @@ You can shoot me email at septianahmad[at]naisinpo[dot]com, visit my blog at seo
 == Changelog ==
 
 = 1.1 =
+* Custom stylesheet (custom-style.css) for easy css modification.
+* Responsive video with jQuery fitvids.
+* Fixing Masonry layout bug.
+* New! Editor Style design.
+* New! Featured Audio & Video list WP 3.9.
+* Customizable css for media player with custom media element.
+* Dynamic size featured image depend on layout options.
+* Fix bug on empty mobile menu.
+* NEW! Layout Options, 2 column right and Fullwidth layout. 2 column right default layout or 1 column layout options.
+* Fix css bug on Post no result found.
 * Fix Internet Explorer 8 css bug positioning on content gallery images at index/archive.
 
 = 1.0.2 =

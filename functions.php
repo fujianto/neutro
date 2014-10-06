@@ -196,14 +196,13 @@ function neutro_custom_css(){
  * @return string Theme customizer css.
  */
 function neutro_customizer_css(){
-	$customizer_options = get_theme_mod('neutro_customizer' ); 
+	$customizer_options = get_option( 'neutro_customizer' ); 
 
 	if(!empty($customizer_options) ){ ?>
 		
 		<style type="text/css">
-			/* Theme Customizer CSS */
             a { color: <?php echo $customizer_options['link_color']; ?>; }
-            .header-wrapper, #header-container{ background: <?php echo $customizer_options['header_color'] ?>;}
+            #header-container{ background: <?php echo $customizer_options['header_color'] ?>;}
             #secondary-menu-container, .secondary-menu ul li ul li{ background: <?php echo $customizer_options['secondary_menu_color']; ?> }
             .footer-container{ background: <?php echo $customizer_options['footer_color'] ?>; }
         </style>
@@ -645,27 +644,30 @@ function neutro_sanitize($input) {
  * 
  * @return mixed
  */
-function neutro_get_several_gallery_thumbnail($images_count, $size ='medium'){
+function neutro_get_several_gallery_thumbnail($images_count, $width = '372px', $height = '200px'){
 	 /* Check if Gallery exist inside post */
     if ( get_post_gallery() ) :
         $gallery = get_post_gallery( get_the_ID(), false );
-       
-        /* Loop through all the image and output them one by one */
+
         $i = 1;
-        $ids = explode( ",", $gallery['ids'] );
+        /* Loop through all the image and output them one by one */
+        foreach( $gallery['src'] AS $src )
+        { 
+            ?>
 
-        foreach( $ids as $id ) {
-			$link   = get_permalink();
-			$url   = wp_get_attachment_url( $id ); //Not used for now.
-			$image  = wp_get_attachment_image( $id, $size);
-		?>	
-
-		<?php
-			$imageId = ($i % 2 == 0 ? 'even' : 'odd');
-			echo( "<li class='images-gallery' id='image-". $imageId ."'><figure><a href='$link'>" . $image . "</a></figure></li>" );
-			if ($i++ == $images_count) 
+            <li>
+                <figure>
+	                <a href="<?php echo get_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+	                	<img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php the_title_attribute(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"/>
+	                </a>
+                </figure>
+            </li>
+            
+            <?php
+	        /* $images_count = How many image will be shown	*/
+	        if ($i++ == $images_count) 
 	        	break;
-		} 
+	        }
 
     endif;			
 }
