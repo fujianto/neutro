@@ -18,7 +18,7 @@
         //Update header color in real time...
         wp.customize( 'neutro_customizer[header_color]', function( value ) {
                 value.bind( function( to ) {
-                        $( '#header-container' ).css( 'background', to );
+                        $( '.header-wrapper, #header-container' ).css( 'background', to );
                 } );
         });
 
