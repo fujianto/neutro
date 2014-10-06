@@ -128,6 +128,7 @@ You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `
 
 **1.1.1**
 
+* Sanitize theme customizer options.
 * Fix theme customizer header color preview.
 * Fix undefined index notice on comment form submit.
 * Fix cursor pointer css on Searchbox.
