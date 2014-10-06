@@ -487,6 +487,7 @@ function neutro_comments_args(){
 
 	$comments_args = array(
 		'id_submit'=>'btn-comment-submit',
+		'name_submit' => 'submit',
        	'fields' => apply_filters( 'comment_form_default_fields',  array( 
        		'author' =>
 		      '<div class="view-row">' .
