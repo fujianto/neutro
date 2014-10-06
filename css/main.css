@@ -1944,7 +1944,7 @@ img.center {
     display: none;
   }
   #secondary-menu-container {
-    background: #ecf0f1 !important;
+    background: transparent !important;
   }
   #secodary-menu-wrapper {
     width: 98%;
