@@ -256,7 +256,7 @@ input[type="color"]:focus {
   color: #ffffff;
   background-color: #19c4cf;
   border-color: #19c4cf;
-  cursor: none;
+  cursor: context-menu;
 }
 .btn.btn-inside:hover,
 .btn.btn-inside:focus {
@@ -407,7 +407,6 @@ input[type="color"]:focus {
   opacity: 1;
   visibility: visible;
   height: auto;
-  -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
 .main-menu .current-menu-item {
@@ -535,7 +534,6 @@ input[type="color"]:focus {
   opacity: 1;
   visibility: visible;
   height: auto;
-  -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
 .secondary-menu .current-menu-item,
