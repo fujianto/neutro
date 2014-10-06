@@ -19,7 +19,7 @@
         <?php wp_head(); // wp_head ?>
       
     </head>
-
+    
     <body class="<?php hybrid_body_class(); ?>">
 
         <div class="header-wrapper">

@@ -232,6 +232,19 @@ function neutro_customizer_live_preview() {
 } 
 
 /**
+ * Sanitize theme customizer for display logo checkbox.
+ * 
+ * @param  boolean $input checkbox value for display logo.
+ * @return boolean      return sanitized boolean value. 
+ */
+function neutro_sanitize_display_logo($input){
+	if(is_bool($input)){
+		return $input;
+	}
+}
+
+
+/**
  * Enqueue javascripts for WordPress theme Frontend.
  * 
  * @since 1.0
