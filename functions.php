@@ -196,13 +196,14 @@ function neutro_custom_css(){
  * @return string Theme customizer css.
  */
 function neutro_customizer_css(){
-	$customizer_options = get_option( 'neutro_customizer' ); 
+	$customizer_options = get_theme_mod('neutro_customizer'); 
 
 	if(!empty($customizer_options) ){ ?>
 		
 		<style type="text/css">
+			/* Theme Customizer CSS */
             a { color: <?php echo $customizer_options['link_color']; ?>; }
-            #header-container{ background: <?php echo $customizer_options['header_color'] ?>;}
+             .header-wrapper, #header-container{ background: <?php echo $customizer_options['header_color'] ?>;}
             #secondary-menu-container, .secondary-menu ul li ul li{ background: <?php echo $customizer_options['secondary_menu_color']; ?> }
             .footer-container{ background: <?php echo $customizer_options['footer_color'] ?>; }
         </style>
