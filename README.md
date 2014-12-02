@@ -6,9 +6,9 @@
 
 **Requires at least**: 3.6
 
-**Tested up to**: 3.9.1
+**Tested up to**: 4.0
 
-**Stable tag**: 1.1
+**Stable tag**: 1.1.1
 
 **License**: GPL
 
@@ -125,6 +125,14 @@ You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `
 * Standard Theme Screenshot
 
 <h2> Changelog </h2>
+
+**1.1.1**
+
+* Sanitize theme customizer options.
+* Fix theme customizer header color preview.
+* Fix undefined index notice on comment form submit.
+* Fix cursor pointer css on Searchbox.
+* Fix theme customizer color bugs.
 
 **1.1**
 

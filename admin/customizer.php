@@ -24,7 +24,8 @@ function neutro_register_customizer($wp_customize){
 	/* Display logo setting & control */
 	$wp_customize->add_setting('display_logo', array(
 		'default'=>'0',
-		'type' => 'theme_mod' 
+		'type' => 'theme_mod',
+		'sanitize_callback' => 'neutro_sanitize_display_logo' 
 	));
 	
 	$wp_customize->add_control('display_logo', array(
@@ -37,6 +38,7 @@ function neutro_register_customizer($wp_customize){
 	 /*Logo upload setting &control*/	
 	$wp_customize->add_setting('neutro_logo_url', array(
 		'default' => THEME_URI.'/images/logo.png',
+		'sanitize_callback' => 'sanitize_url',
 		'type' => 'theme_mod'
 	));
 		

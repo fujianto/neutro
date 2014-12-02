@@ -407,7 +407,6 @@ input[type="color"]:focus {
   opacity: 1;
   visibility: visible;
   height: auto;
-  -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
 .main-menu .current-menu-item {
@@ -535,7 +534,6 @@ input[type="color"]:focus {
   opacity: 1;
   visibility: visible;
   height: auto;
-  -webkit-transition-delay: 0s;
   transition-delay: 0s;
 }
 .secondary-menu .current-menu-item,
@@ -1946,7 +1944,7 @@ img.center {
     display: none;
   }
   #secondary-menu-container {
-    background: #ecf0f1 !important;
+    background: transparent !important;
   }
   #secodary-menu-wrapper {
     width: 98%;

@@ -2,8 +2,8 @@
 Contributors: Septian Ahmad Fujianto
 Tags: gray, white, green, blue, two-columns, three-columns, right-sidebar, responsive-layout, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 3.6
-Tested up to: 3.9.1
-Stable tag: 1.1
+Tested up to: 4.0
+Stable tag: 1.1.1
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -117,6 +117,13 @@ You can shoot me email at septianahmad[at]naisinpo[dot]com, visit my blog at seo
 1. Standard Theme Screenshot
 
 == Changelog ==
+
+1.1.1
+* Sanitize theme customizer options.
+* Fix theme customizer header color preview.
+* Fix undefined index notice on comment form submit.
+* Fix cursor pointer css on Searchbox.
+* Fix theme customizer color bugs.
 
 = 1.1 =
 * Custom stylesheet (custom-style.css) for easy css modification.

@@ -232,6 +232,19 @@ function neutro_customizer_live_preview() {
 } 
 
 /**
+ * Sanitize theme customizer for display logo checkbox.
+ * 
+ * @param  boolean $input checkbox value for display logo.
+ * @return boolean      return sanitized boolean value. 
+ */
+function neutro_sanitize_display_logo($input){
+	if(is_bool($input)){
+		return $input;
+	}
+}
+
+
+/**
  * Enqueue javascripts for WordPress theme Frontend.
  * 
  * @since 1.0
@@ -487,7 +500,8 @@ function neutro_comments_args(){
 
 	$comments_args = array(
 		'id_submit'=>'btn-comment-submit',
-       	'fields' => apply_filters( 'comment_form_default_fields',  array( 
+		'name_submit' => 'submit',
+       	'fields' => apply_filters('comment_form_default_fields',  array( 
        		'author' =>
 		      '<div class="view-row">' .
 
