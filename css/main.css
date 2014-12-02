@@ -256,7 +256,7 @@ input[type="color"]:focus {
   color: #ffffff;
   background-color: #19c4cf;
   border-color: #19c4cf;
-  cursor: none;
+  cursor: context-menu;
 }
 .btn.btn-inside:hover,
 .btn.btn-inside:focus {
