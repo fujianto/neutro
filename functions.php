@@ -20,7 +20,7 @@
  *
  * @package    Neutro
  * @subpackage Functions
- * @version    1.0.2
+ * @version    1.1.2
  * @since      1.0
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013, Septian Ahmad Fujianto
