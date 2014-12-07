@@ -3,7 +3,7 @@ Contributors: Septian Ahmad Fujianto
 Tags: gray, white, green, blue, two-columns, three-columns, right-sidebar, responsive-layout, custom-background, custom-colors, custom-menu, featured-images, post-formats, sticky-post, theme-options, threaded-comments, translation-ready
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPL
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -118,7 +118,14 @@ You can shoot me email at septianahmad[at]naisinpo[dot]com, visit my blog at seo
 
 == Changelog ==
 
-1.1.1
+= 1.1.2 =
+* Fix css to make content wider on smaller screen devices.
+* Fix less bug. 
+* Add support for custom portfolio (With child theme Neutro).
+* Fix css bug on 404 page loop error.
+* Remove deprecated param on Get the image.
+
+= 1.1.1 =
 * Sanitize theme customizer options.
 * Fix theme customizer header color preview.
 * Fix undefined index notice on comment form submit.

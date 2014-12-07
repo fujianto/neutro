@@ -8,7 +8,7 @@
 
 **Tested up to**: 4.0
 
-**Stable tag**: 1.1.1
+**Stable tag**: 1.1.2
 
 **License**: GPL
 
@@ -125,6 +125,14 @@ You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `
 * Standard Theme Screenshot
 
 <h2> Changelog </h2>
+
+**1.1.2**
+
+* Fix css to make content wider on smaller screen devices.
+* Fix less bug. 
+* Add support for custom portfolio (With child theme Neutro).
+* Fix css bug on 404 page loop error.
+* Remove deprecated param on Get the image.
 
 **1.1.1**
 
