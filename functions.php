@@ -341,6 +341,34 @@ function neutro_enqueue_styles() {
 }
 
 /**
+ * Creates a more specific title element text
+ * @param  String $title Page title
+ * @param  String $sep   Separator
+ * @return String        more specific title element
+ */
+function neutro_wp_title( $title, $sep ) {
+	global $paged, $page;
+
+	if ( is_feed() )
+		return $title;
+
+	// Add the site name.
+	$title .= get_bloginfo( 'name' );
+
+	// Add the site description for the home/front page.
+	$site_description = get_bloginfo( 'description', 'display' );
+	if ( $site_description && ( is_home() || is_front_page() ) )
+		$title = "$title $sep $site_description";
+
+	// Add a page number if necessary.
+	if ( $paged >= 2 || $page >= 2 )
+		$title = "$title $sep " . sprintf( __( 'Page %s', 'neutro' ), max( $paged, $page ) );
+
+	return $title;
+}
+add_filter( 'wp_title', 'neutro_wp_title', 10, 2 );
+
+/**
  * Add custom class on post_class
  * 
  * @since 1.0
