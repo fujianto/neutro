@@ -2,7 +2,7 @@
     <section class="container" id="main-container">
     	<div class="row">
         	<div class="span8" id="content-wrapper">
-				
+			
 				<?php get_template_part( 'breadcrumbs' ); // Loads the breadcrumbs.php template. ?>
 				
 				<?php get_template_part( 'loop-meta' ); // Loads the loop-meta.php template. ?>

@@ -266,8 +266,7 @@ function neutro_enqueue_scripts() {
 		
 	}
 
-	if(!is_singular() )
-	{
+	if(!is_singular() || is_post_type_archive() || is_page_template('page-template-portfolio.php')){
 		wp_enqueue_script( 'imagesloaded', hybrid_locate_theme_file( array('js/min/imagesloaded.pkgd.min.js') ) , 
 			array('jquery'), '3.0.4', true );
 		wp_enqueue_script('jquery-masonry');	
@@ -350,7 +349,7 @@ function neutro_enqueue_styles() {
  */
 function neutro_post_class($classes){	
 	/*	Don't add .item on singular post type */
-	if(!is_singular() && !is_404() ){
+	if(!is_singular() && !is_404()){
 		$classes[] = 'item';
 	}
 
@@ -813,7 +812,7 @@ function neutro_is_ie8(){
  */ 
 function neutro_one_column() {
 
-    if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) && !is_active_sidebar( 'tertiary' ) )
+    if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) && !is_active_sidebar( 'tertiary' ))
         add_filter( 'get_theme_layout', 'neutro_theme_layout_one_column' );
 }
 

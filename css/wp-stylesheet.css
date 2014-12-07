@@ -1,0 +1,434 @@
+@font-face {
+  font-family: 'droid_serifregular';
+  src: url('../font/droid_serif_regular/DroidSerif-webfont.eot');
+  src: url('../font/droid_serif_regular/DroidSerif-webfont.eot?#iefix') format('embedded-opentype'), url('../font/droid_serif_regular/DroidSerif-webfont.woff') format('woff'), url('../font/droid_serif_regular/DroidSerif-webfont.ttf') format('truetype'), url('../font/droid_serif_regular/roidSerif-webfont.svg#droid_serifregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*** Open Sans Typeface ***/
+@font-face {
+  font-family: 'open_sanslight';
+  src: url('../font/open_sans_light/OpenSans-Light-webfont.eot');
+  src: url('../font/open_sans_light/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('../font/open_sans_light/OpenSans-Light-webfont.woff') format('woff'), url('../font/open_sans_light/OpenSans-Light-webfont.ttf') format('truetype'), url('../font/open_sans_light/OpenSans-Light-webfont.svg#open_sanslight') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'open_sansregular';
+  src: url('../font/open_sans_regular/OpenSans-Regular-webfont.eot');
+  src: url('../font/open_sans_regular/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'), url('../font/open_sans_regular/OpenSans-Regular-webfont.woff') format('woff'), url('../font/open_sans_regular/OpenSans-Regular-webfont.ttf') format('truetype'), url('../font/open_sans_regular/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'open_sanssemibold';
+  src: url('../font/open_sans_semibold/OpenSans-Semibold-webfont.eot');
+  src: url('../font/open_sans_semibold/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'), url('../font/open_sans_semibold/OpenSans-Semibold-webfont.woff') format('woff'), url('../font/open_sans_semibold/OpenSans-Semibold-webfont.ttf') format('truetype'), url('../font/open_sans_semibold/OpenSans-Semibold-webfont.svg#open_sanssemibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*** Font Faimily ***/
+/*** Header ***/
+/*** Base color ***/
+/*** Body & Content ***/
+/*** Footer ***/
+/*** Form ***/
+/*** Mixins Collection ***/
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.button-nav-green {
+  background: #19c4cf;
+  color: white;
+  font: 15px 'droid_serifregular', serif;
+  text-transform: lowercase;
+}
+.button-nav-green:hover {
+  background-color: #16aeb8;
+  color: #f2f2f2;
+  text-decoration: none;
+}
+/***  WordPress specific css  ***/
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+.aligncenter,
+.alignleft,
+.alignright,
+.alignnone {
+  border: 1px solid #ededed;
+}
+.aligncenter,
+img.center {
+  display: block;
+  margin: 1.5em auto;
+}
+.alignnone {
+  margin-bottom: 1em;
+}
+.alignleft {
+  float: left;
+  margin: 0.3em 2em 1.5em 0;
+}
+.alignright {
+  float: right;
+  margin: 0.3em 0 1.5em 2em;
+}
+.left {
+  float: left;
+  margin: 1.5em 2em 1.5em 0;
+}
+.right {
+  float: right;
+  margin: 1.5em 0 1.5em 2em;
+}
+.wp-caption,
+.wp-caption .wp-caption-text,
+.gallery-caption,
+.entry-caption {
+  text-align: center;
+  line-height: 34px;
+  font-style: italic;
+}
+.entry-attachment {
+  margin: 0em 0.5em;
+  padding: 5px 0px 0px 6px;
+}
+.video-container + p {
+  margin-top: 1.5em;
+}
+.item .mejs-time-rail {
+  width: 50% !important;
+}
+/***   Post Format style     ***/
+.format-aside {
+  border: 0;
+  border-bottom: 3px solid #333333;
+  padding: 1em 0;
+  background: #f1f1f1;
+}
+.format-link {
+  border: 0;
+  border-bottom: 3px dotted #3498db;
+  padding-top: 1em;
+  background: #e1f0fa;
+  text-align: center;
+}
+.format-link h2 a::after {
+  content: '\f442';
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  font: normal 32px/1 'Genericons';
+  vertical-align: middle;
+  padding-left: 3px;
+  top: 48%;
+}
+.format-status {
+  color: #eeeeee;
+  background: #34495e;
+}
+.format-status .avatar {
+  float: left;
+  width: 70px;
+  height: 70px;
+  margin: 0 25px 25px 0;
+  padding: 0;
+  border: none;
+}
+.format-gallery br {
+  clear: both;
+}
+.format-gallery .entry-meta {
+  margin-top: 1em;
+}
+.format-gallery .gallery-thumbnail {
+  margin-top: 1.5em;
+}
+.format-gallery .gallery-thumbnail ul {
+  list-style: none;
+  margin: 0;
+}
+.format-gallery .gallery-thumbnail ul li:first-child {
+  width: 100%;
+}
+.format-gallery .gallery-thumbnail ul li:first-child img {
+  height: auto;
+}
+.format-gallery .gallery-thumbnail ul li {
+  width: 50%;
+}
+.format-gallery .gallery-thumbnail ul li:nth-child(odd) {
+  float: left;
+}
+.format-gallery .gallery-thumbnail ul li:nth-child(even) {
+  float: right;
+}
+.format-gallery .gallery-thumbnail ul li#image-odd {
+  float: left;
+}
+.format-gallery .gallery-thumbnail ul li#image-even {
+  float: right;
+}
+.format-quote {
+  padding-top: 0;
+  background: #ecf0f1;
+  text-align: center;
+}
+.format-quote blockquote {
+  padding-left: 2em;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  clear: both;
+  position: relative;
+}
+.format-quote blockquote:before {
+  float: left;
+  display: block;
+  padding: 0;
+  padding-right: 5px;
+  top: 0;
+  left: 13%;
+  position: absolute;
+}
+.format-quote blockquote p {
+  line-height: 1.5em;
+}
+.format-quote blockquote cite {
+  font-size: 75%;
+  border-bottom: 1px dotted #3498db;
+}
+.format-quote blockquote cite a:hover {
+  text-decoration: none;
+}
+.format-chat .chat-transcript {
+  margin-top: 1em;
+  padding: 0 1em;
+}
+.format-chat .chat-text {
+  margin-left: 25px;
+  margin: 1em 0;
+}
+.format-chat .chat-text p {
+  padding: 1em;
+}
+.format-chat .chat-row:first-child .chat-author {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+.format-chat .chat-row:nth-of-type(odd) {
+  text-align: left;
+}
+.format-chat .chat-row:nth-of-type(odd) .chat-text {
+  margin-left: 25px;
+  margin-right: 0;
+  position: relative;
+}
+.format-chat .chat-row:nth-of-type(odd) .chat-text:after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  border-left: 0 solid transparent;
+  border-right: 8px solid transparent;
+}
+.format-chat .chat-row:nth-of-type(even) {
+  text-align: right;
+}
+.format-chat .chat-row:nth-of-type(even) .chat-text {
+  margin-left: 0;
+  margin-right: 25px;
+  position: relative;
+}
+.format-chat .chat-row:nth-of-type(even) .chat-text:after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  border-left: 8px solid transparent;
+  border-right: 0 solid transparent;
+}
+.format-chat .chat-author {
+  font-size: 1em;
+  margin-top: -12px;
+  padding-top: 12px;
+}
+.format-chat .chat-author::before {
+  content: '\f304';
+  display: inline-block;
+  -webkit-font-smoothing: antialiased;
+  font: normal 32px/1 'Genericons';
+  vertical-align: middle;
+  padding-right: 3px;
+  top: 48%;
+}
+.format-chat .chat-speaker-1 .chat-author,
+.format-chat .chat-speaker-11 .chat-author {
+  color: #3498db;
+}
+.format-chat .chat-speaker-1 .chat-text,
+.format-chat .chat-speaker-11 .chat-text {
+  background: #a0cfee;
+}
+.format-chat .chat-speaker-1 .chat-text:after,
+.format-chat .chat-speaker-11 .chat-text:after {
+  border-bottom: 8px solid #a0cfee;
+}
+.format-chat .chat-speaker-2 .chat-author,
+.format-chat .chat-speaker-12 .chat-author {
+  color: #f1c40f;
+}
+.format-chat .chat-speaker-2 .chat-text,
+.format-chat .chat-speaker-12 .chat-text {
+  background: #f8e287;
+}
+.format-chat .chat-speaker-2 .chat-text:after,
+.format-chat .chat-speaker-12 .chat-text:after {
+  border-bottom: 8px solid #f8e287;
+}
+.format-chat .chat-speaker-3 .chat-author,
+.format-chat .chat-speaker-13 .chat-author {
+  color: #e74c3c;
+}
+.format-chat .chat-speaker-3 .chat-text,
+.format-chat .chat-speaker-13 .chat-text {
+  background: #f5b4ae;
+}
+.format-chat .chat-speaker-3 .chat-text:after,
+.format-chat .chat-speaker-13 .chat-text:after {
+  border-bottom: 8px solid #f5b4ae;
+}
+.format-chat .chat-speaker-4 .chat-author,
+.format-chat .chat-speaker-14 .chat-author {
+  color: #2ecc71;
+}
+.format-chat .chat-speaker-4 .chat-text,
+.format-chat .chat-speaker-14 .chat-text {
+  background: #93e7b6;
+}
+.format-chat .chat-speaker-4 .chat-text:after,
+.format-chat .chat-speaker-14 .chat-text:after {
+  border-bottom: 8px solid #93e7b6;
+}
+.format-chat .chat-speaker-5 .chat-author,
+.format-chat .chat-speaker-15 .chat-author {
+  color: #f39c12;
+}
+.format-chat .chat-speaker-5 .chat-text,
+.format-chat .chat-speaker-15 .chat-text {
+  background: #f9cf8b;
+}
+.format-chat .chat-speaker-5 .chat-text:after,
+.format-chat .chat-speaker-15 .chat-text:after {
+  border-bottom: 8px solid #f9cf8b;
+}
+.format-chat .chat-speaker-6 .chat-author,
+.format-chat .chat-speaker-16 .chat-author {
+  color: #9b59b6;
+}
+.format-chat .chat-speaker-6 .chat-text,
+.format-chat .chat-speaker-16 .chat-text {
+  background: #d0b2dd;
+}
+.format-chat .chat-speaker-6 .chat-text:after,
+.format-chat .chat-speaker-16 .chat-text:after {
+  border-bottom: 8px solid #d0b2dd;
+}
+.format-chat .chat-speaker-7 .chat-author,
+.format-chat .chat-speaker-17 .chat-author {
+  color: #95a5a6;
+}
+.format-chat .chat-speaker-7 .chat-text,
+.format-chat .chat-speaker-17 .chat-text {
+  background: #dae0e0;
+}
+.format-chat .chat-speaker-7 .chat-text:after,
+.format-chat .chat-speaker-17 .chat-text:after {
+  border-bottom: 8px solid #dae0e0;
+}
+.format-chat .chat-speaker-8 .chat-author,
+.format-chat .chat-speaker-18 .chat-author {
+  color: #16a085;
+}
+.format-chat .chat-speaker-8 .chat-text,
+.format-chat .chat-speaker-18 .chat-text {
+  background: #4fe7c9;
+}
+.format-chat .chat-speaker-8 .chat-text:after,
+.format-chat .chat-speaker-18 .chat-text:after {
+  border-bottom: 8px solid #4fe7c9;
+}
+.format-chat .chat-speaker-9 .chat-author,
+.format-chat .chat-speaker-19 .chat-author {
+  color: #e67e22;
+}
+.format-chat .chat-speaker-9 .chat-text,
+.format-chat .chat-speaker-19 .chat-text {
+  background: #f3c195;
+}
+.format-chat .chat-speaker-9 .chat-text:after,
+.format-chat .chat-speaker-19 .chat-text:after {
+  border-bottom: 8px solid #f3c195;
+}
+.format-chat .chat-speaker-10 .chat-author,
+.format-chat .chat-speaker-20 .chat-author {
+  color: #1abc9c;
+}
+.format-chat .chat-speaker-10 .chat-text,
+.format-chat .chat-speaker-20 .chat-text {
+  background: #6bebd1;
+}
+.format-chat .chat-speaker-10 .chat-text:after,
+.format-chat .chat-speaker-20 .chat-text:after {
+  border-bottom: 8px solid #6bebd1;
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .wp-caption,
+  .wp-caption .wp-caption-text,
+  .gallery-caption,
+  .entry-caption {
+    text-align: center;
+    line-height: 18px;
+    font-style: italic;
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .wp-caption,
+  .wp-caption .wp-caption-text,
+  .gallery-caption,
+  .entry-caption {
+    text-align: center;
+    line-height: 18px;
+    font-style: italic;
+    font-size: 12px;
+  }
+}

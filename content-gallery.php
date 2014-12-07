@@ -20,7 +20,7 @@
 				comments_popup_link('0', '1', '%','comment-counter'); ?>
 
 				<?php $featured_image = neutro_featured_image_widths(); 
-				if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => $featured_image['size'], 'width' => $featured_image['width'], 'height' => $featured_image['height'], 'image_scan' => 'true', 'image_class' => 'featured-thumbnail', 'before' => '<figure>', 'after' => '</figure>' ) ); ?>	
+				if ( current_theme_supports( 'get-the-image' ) ) get_the_image( array( 'size' => $featured_image['size'], 'width' => $featured_image['width'], 'height' => $featured_image['height'], 'image_class' => 'featured-thumbnail', 'before' => '<figure>', 'after' => '</figure>' ) ); ?>	
 		
 			
 		</header><!-- .entry-header -->
