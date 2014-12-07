@@ -666,9 +666,6 @@ input[type="color"]:focus {
   padding: 1em 8em;
 }
 /*** Hack for firefox column-break-inside ***/
-@-moz-document url-prefix() {
-  
-}
 .item {
   background: #ffffff;
   border: 1px solid #ededed;
@@ -2324,6 +2321,10 @@ img.center {
   }
 }
 @media only screen and (max-width: 479px) {
+  body {
+    padding-right: 0.2em;
+    padding-left: 0.1em;
+  }
   #header-container .website-logo {
     text-align: left;
   }
@@ -2392,6 +2393,9 @@ img.center {
     font-size: 13px;
     line-height: 1.6em;
   }
+  .flexslider {
+    margin: 0 0 60px;
+  }
   .flex-caption {
     position: relative;
     margin: 0;
@@ -2414,9 +2418,11 @@ img.center {
   .layout-default .item,
   .layout-2c-r .item {
     width: 100%;
+    margin: 0 0 3em;
   }
   .layout-1c .item {
     width: 100%;
+    margin: 0 0 3em;
   }
   .layout-1c .single-content .title {
     padding: 1em 1.1em 0 1.1em;
