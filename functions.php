@@ -266,7 +266,7 @@ function neutro_enqueue_scripts() {
 		
 	}
 
-	if(!is_singular() || is_post_type_archive() || is_page_template('page-template-portfolio.php')){
+	if(!is_singular() || is_page_template('page-template-portfolio.php')){
 		wp_enqueue_script( 'imagesloaded', hybrid_locate_theme_file( array('js/min/imagesloaded.pkgd.min.js') ) , 
 			array('jquery'), '3.0.4', true );
 		wp_enqueue_script('jquery-masonry');	
