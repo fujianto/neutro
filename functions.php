@@ -20,7 +20,7 @@
  *
  * @package    Neutro
  * @subpackage Functions
- * @version    1.1.2
+ * @version    1.2
  * @since      1.0
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013, Septian Ahmad Fujianto
@@ -41,12 +41,12 @@ function neutro_theme_setup() {
 	$prefix = hybrid_get_prefix();
 
 	/* Load Theme Settings */
-	if ( is_admin() ) 
-        require_once(trailingslashit(get_template_directory()) . 'admin/admin.php' );
+	if ( is_admin() ){  
+		require_once(trailingslashit(get_template_directory()) . 'admin/admin.php' );  
+    }
 
-    /* Load Theme Customizer */
-	if ( is_admin() ) 
-        require_once(trailingslashit(get_template_directory()) . 'admin/customizer.php' );
+ 	/* Load Theme Customizer */
+    require_once(trailingslashit(get_template_directory()) . 'admin/customizer.php' );
 
     // Enables settings page
     add_theme_support( 'hybrid-core-theme-settings', array('about', 'footer') ); 
@@ -155,7 +155,23 @@ function neutro_theme_setup() {
 	//hybrid_set_content_width( 768 );
 
 	/* Embed width/height defaults. */
-	add_filter( 'embed_defaults', 'neutro_embed_defaults' );  	 
+	add_filter( 'embed_defaults', 'neutro_embed_defaults' );  	
+
+	/*
+	 * Let WordPress manage the document title.
+	 * By adding theme support, we declare that this theme does not use a
+	 * hard-coded <title> tag in the document head, and expect WordPress to
+	 * provide it for us.
+	 */
+	add_theme_support( 'title-tag' );
+
+	/*
+	 * Switch default core markup for search form, comment form, and comments
+	 * to output valid HTML5.
+	 */
+	add_theme_support( 'html5', array(
+		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+	) );
 }
 
 
@@ -220,15 +236,13 @@ function neutro_customizer_css(){
 add_action( 'customize_preview_init', 'neutro_customizer_live_preview' );
 
 function neutro_customizer_live_preview() {
-
-        wp_enqueue_script(
-                'neutro-theme-customizer',
-                THEME_URI . '/js/min/theme-customizer.min.js',
-                array( 'jquery', 'customize-preview' ),
-                '0.3.0',
-                true
-        );
-
+    wp_enqueue_script(
+            'neutro-theme-customizer',
+            THEME_URI . '/js/min/theme-customizer.min.js',
+            array( 'jquery', 'customize-preview' ),
+            '0.3.0',
+            true
+    );
 } 
 
 /**
@@ -346,27 +360,30 @@ function neutro_enqueue_styles() {
  * @param  String $sep   Separator
  * @return String        more specific title element
  */
-function neutro_wp_title( $title, $sep ) {
-	global $paged, $page;
+if ( ! function_exists( '_wp_render_title_tag' ) ) {
+	function neutro_wp_title( $title, $sep ) {
+		global $paged, $page;
 
-	if ( is_feed() )
+		if ( is_feed() )
+			return $title;
+
+		// Add the site name.
+		$title .= get_bloginfo( 'name' );
+
+		// Add the site description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			$title = "$title $sep $site_description";
+
+		// Add a page number if necessary.
+		if ( $paged >= 2 || $page >= 2 )
+			$title = "$title $sep " . sprintf( __( 'Page %s', 'neutro' ), max( $paged, $page ) );
+
 		return $title;
-
-	// Add the site name.
-	$title .= get_bloginfo( 'name' );
-
-	// Add the site description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		$title = "$title $sep $site_description";
-
-	// Add a page number if necessary.
-	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'neutro' ), max( $paged, $page ) );
-
-	return $title;
+	}
+	
+	add_filter( 'wp_title', 'neutro_wp_title', 10, 2 );
 }
-add_filter( 'wp_title', 'neutro_wp_title', 10, 2 );
 
 /**
  * Add custom class on post_class
@@ -463,10 +480,10 @@ add_filter( 'neutro_list_comments_args', 'add_neutro_list_comments_args');
 
 
 /**
- * Custom Footer content / footer_insert using [neutro-link] Shortcodes.
+ * Custom Footer content / footer_insert.
  * This function is made in order to alter credits link to 'Neutro Theme' from default 'Neutro WordPress Theme'
  * 
- * @since 1.0.1
+ * @since 1.1.
  * @param array $settings 
  * @return array
  */
@@ -482,11 +499,11 @@ function neutro_theme_settings($settings){
 
 		/* If there is a child theme active, add the [child-link] shortcode to the $footer_insert. */
 		if ( is_child_theme() )
-			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; [the-year] [site-link].', 'neutro' ) . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by [wp-link], [neutro-link], and [child-link].', 'neutro' ) . '</p>';
+			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; ', 'neutro' ) . hybrid_the_year_shortcode() .' '. hybrid_site_link_shortcode() . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by ', 'neutro' ) . hybrid_wp_link_shortcode() . ', ' . hybrid_theme_link_shortcode() . ', ' . hybrid_child_link_shortcode() .'.</p>';
 
 		/* If no child theme is active, leave out the [child-link] shortcode. */
 		else
-			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; [the-year] [site-link].', 'neutro' ) . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by [wp-link] and [neutro-link].', 'neutro' ) . '</p>';
+			$settings['footer_insert'] = '<p class="copyright">' . __( 'Copyright &#169; ', 'neutro' ) . hybrid_the_year_shortcode() .' '. hybrid_site_link_shortcode() . '</p>' . "\n\n" . '<p class="credit">' . __( 'Powered by ', 'neutro' ) . hybrid_wp_link_shortcode() . __(' and ', 'neutro') . hybrid_theme_link_shortcode() . '</p>';
 	}
 
 	return $settings;
@@ -598,32 +615,6 @@ function neutro_exclude_sticky( $query ) {
 	if ( is_home() && $query->is_main_query() && hybrid_get_setting('featured_slider_display' ) != 1 ) 
 		$query->set( 'post__not_in', get_option( 'sticky_posts' ) );	
 }
-
-
-/*********************************************/
-/*			Neutro Shortcode			     */
-/*********************************************/
-
-/**
- * Shortcode to display a link to the parent theme page.
- *
- * @since 1.0.1
- * @access public
- * @uses get_theme_data() Gets theme (parent theme) information.
- * @return string
- */
-function neutro_theme_link_shortcode() {
-
-	$theme = wp_get_theme( get_template() );
-	$themeURI = esc_url( $theme->get( 'ThemeURI' ) );
-	$link_title = sprintf( esc_attr__( '%s Theme', 'neutro' ), $theme->get( 'Name' ) );
-	$link_content =  esc_attr( $theme->get( 'Name' ) );
-
-	return '<a class="theme-link" href="' . $themeURI . '" title="' . $link_title . '"><span>' . $link_content . '</span></a>';
-}
-
-add_shortcode('neutro-link', 'neutro_theme_link_shortcode');
-
 
 /*********************************************/
 /*			Neutro Custom Function			 */
@@ -939,5 +930,4 @@ function neutro_array_push_assoc($array, $key, $value){
 //}
 //add_filter( 'style_loader_src', 'pmc_dev_cachebuster' );
 //add_filter( 'script_loader_src', 'pmc_dev_cachebuster' );
-
 ?>

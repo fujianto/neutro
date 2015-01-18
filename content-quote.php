@@ -19,7 +19,7 @@
 
 		<footer class="entry-footer">
 
-			<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="single-entry-meta">' . __( '[entry-published] [entry-terms taxonomy="category"] [entry-terms] [entry-edit-link]', 'neutro' ) . '</div>' ); ?>
+			<?php include "template/short-content-meta.php"; ?>
 
 		</footer><!-- .entry-footer -->
 		

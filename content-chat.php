@@ -24,9 +24,7 @@
 		</div><!-- .entry-content -->
 
 		<footer class="entry-footer">
-
-			<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="single-entry-meta">' . __( '[entry-published] [entry-terms taxonomy="category"] [entry-terms] [entry-edit-link]', 'neutro' ) . '</div>' ); ?>
-
+			<?php include "template/short-content-meta.php"; ?>
 		</footer><!-- .entry-footer --> 
 
 	</article>
@@ -37,7 +35,7 @@
 			<article <?php hybrid_post_attributes(); ?>>	
 
 				<header class="entry-header">
-					<?php echo apply_atomic_shortcode( 'entry_title', '[entry-title]' ); ?>
+					<?php echo hybrid_entry_title_shortcode(''); ?>
 				</header><!-- .entry-header -->
 				
 				<div class="entry-summary">
@@ -45,8 +43,7 @@
 				</div><!-- .entry-summary -->
 
 				<footer class="entry-meta">
-					<?php echo apply_atomic_shortcode( 'entry_byline', '<p class="article-meta-extra">' . __( '[entry-author] | <a href="' . get_permalink() . '"> [entry-published]</a> | [entry-terms before="In " taxonomy="category"] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'neutro' ) . '</p>' ); ?>
-					
+					<?php include "template/long-content-meta.php"; ?>
 				</footer><!-- .entry-footer -->
 
 				
