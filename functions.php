@@ -20,7 +20,7 @@
  *
  * @package    Neutro
  * @subpackage Functions
- * @version    1.1.3
+ * @version    1.2
  * @since      1.0
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013, Septian Ahmad Fujianto
@@ -236,15 +236,13 @@ function neutro_customizer_css(){
 add_action( 'customize_preview_init', 'neutro_customizer_live_preview' );
 
 function neutro_customizer_live_preview() {
-
-        wp_enqueue_script(
-                'neutro-theme-customizer',
-                THEME_URI . '/js/min/theme-customizer.min.js',
-                array( 'jquery', 'customize-preview' ),
-                '0.3.0',
-                true
-        );
-
+    wp_enqueue_script(
+            'neutro-theme-customizer',
+            THEME_URI . '/js/min/theme-customizer.min.js',
+            array( 'jquery', 'customize-preview' ),
+            '0.3.0',
+            true
+    );
 } 
 
 /**

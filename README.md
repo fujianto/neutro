@@ -6,9 +6,9 @@
 
 **Requires at least**: 3.6
 
-**Tested up to**: 4.0
+**Tested up to**: 4.1
 
-**Stable tag**: 1.1.2
+**Stable tag**: 1.2
 
 **License**: GPL
 
@@ -125,6 +125,16 @@ You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `
 * Standard Theme Screenshot
 
 <h2> Changelog </h2>
+
+**1.2**
+
+* Remove all Shortcode on Theme and Hybrid framework to meet new theme review standard.
+* Fix bug on Theme Customizer not showing options for WordPress 4.1.
+* Add theme support title-tag.
+* Add theme support HTML5 tag.
+* Better organized Content meta information to single place (Author name, published date, etc).
+* Use <code>esc_url_raw</code> to sanitize URL on theme customizer
+
 
 **1.1.2**
 
