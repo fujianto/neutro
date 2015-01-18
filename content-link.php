@@ -25,7 +25,7 @@
 
 		<footer class="entry-footer">
 
-			<?php echo apply_atomic_shortcode( 'entry_meta', '<div class="single-entry-meta">' . __( '[entry-published] [entry-terms taxonomy="category"] [entry-terms] [entry-edit-link]', 'neutro' ) . '</div>' ); ?>
+			<?php include "template/short-content-meta.php"; ?>
 
 		</footer><!-- .entry-footer -->
 
@@ -51,7 +51,7 @@
 				<?php } ?>
 				
 				<footer class="entry-meta">
-					<?php echo apply_atomic_shortcode( 'entry_byline', '<p class="article-meta-extra">' . __( '[entry-author] | <a href="' . get_permalink() . '"> [entry-published] </a> | [entry-terms before="In " taxonomy="category"] [entry-comments-link before=" | "] [entry-edit-link before=" | "]', 'neutro' ) . '</p>' ); ?>
+					<?php include "template/long-content-meta.php"; ?>
 					
 				</footer><!-- .entry-footer -->
 
