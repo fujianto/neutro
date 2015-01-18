@@ -38,7 +38,7 @@ function neutro_register_customizer($wp_customize){
 	 /*Logo upload setting &control*/	
 	$wp_customize->add_setting('neutro_logo_url', array(
 		'default' => THEME_URI.'/images/logo.png',
-		'sanitize_callback' => 'sanitize_url',
+		'sanitize_callback' => 'esc_url_raw',
 		'type' => 'theme_mod'
 	));
 		
