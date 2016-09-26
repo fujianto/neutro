@@ -20,11 +20,11 @@
  *
  * @package    Neutro
  * @subpackage Functions
- * @version    1.2
+ * @version    1.2.5
  * @since      1.0
  * @author     Septian Ahmad Fujianto <septianahmad@naisinpo.com>
  * @copyright  Copyright (c) 2013, Septian Ahmad Fujianto
- * @link       http://seotemplates.net/blog/theme/neutro-wordpress-theme/
+ * @link       http://septianfujianto.com/themes/neutro/
  * @license    http://www.gnu.org/licenses/gpl.html
  */
 
@@ -40,40 +40,38 @@ function neutro_theme_setup() {
 	/* Get action/filter hook prefix. */
 	$prefix = hybrid_get_prefix();
 
-	/* Load Theme Settings */
-	if ( is_admin() ){  
-		require_once(trailingslashit(get_template_directory()) . 'admin/admin.php' );  
-    }
+	/* Load Theme Customizer */
+	require_once(trailingslashit(get_template_directory()) . 'admin/customizer.php' );
 
- 	/* Load Theme Customizer */
-    require_once(trailingslashit(get_template_directory()) . 'admin/customizer.php' );
+	/* Load custom control category dropdown */
+	require_once(trailingslashit(get_template_directory()) . 'admin/category-dropdown-custom-control.php' );
 
     // Enables settings page
-    add_theme_support( 'hybrid-core-theme-settings', array('about', 'footer') ); 
+	add_theme_support( 'hybrid-core-theme-settings', array('about', 'footer') ); 
 
 	/* Register menus. */
 	add_theme_support( 
 		'hybrid-core-menus', 
 		array( 'primary', 'secondary') 
-	);
+		);
 
 	/* Register sidebars. */
 	add_theme_support( 
 		'hybrid-core-sidebars', 
 		array( 'primary', 'secondary', 'tertiary' ) 
-	);
+		);
 
 	/* Load scripts. */
 	add_theme_support( 
 		'hybrid-core-scripts', 
 		array( 'comment-reply' ) 
-	);
+		);
 
 	/* Load styles. */
 	add_theme_support( 
 		'hybrid-core-styles', 
 		array( 'gallery', 'parent','style', ) 
-	);
+		);
 
 	
 	/* Load widgets. */
@@ -113,13 +111,13 @@ function neutro_theme_setup() {
 	add_theme_support( 
 		'post-formats', 
 		array( 'aside', 'audio', 'chat', 'image', 'gallery', 'link', 'quote', 'status', 'video' ) 
-	);
+		);
 
 	/* Custom background. */
 	add_theme_support( 
 		'custom-background',
 		array( 'default-color' => '#f9f9f9' )
-	);
+		);
 
 	/* Theme layouts. */
 	add_theme_support( 'theme-layouts', array( '1c', '2c-r') );
@@ -171,7 +169,7 @@ function neutro_theme_setup() {
 	 */
 	add_theme_support( 'html5', array(
 		'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
-	) );
+		) );
 }
 
 
@@ -183,7 +181,7 @@ add_action( 'init', 'neutro_add_editor_styles' );
  * @return [type] [description]
  */
 function neutro_add_editor_styles() {
-    add_editor_style( hybrid_locate_theme_file( array('css/editor-style.css')) );
+	add_editor_style( hybrid_locate_theme_file( array('css/editor-style.css')) );
 }
 
 
@@ -197,7 +195,7 @@ function neutro_custom_css(){
 	$custom_css = hybrid_get_setting('custom_css');
 
 	if(!empty( $custom_css ) ) :
-?>
+		?>
 	<style type="text/css">
 		<?php echo  htmlspecialchars_decode( $custom_css ) ; ?>
 	</style>
@@ -215,16 +213,16 @@ function neutro_customizer_css(){
 	$customizer_options = get_theme_mod('neutro_customizer'); 
 
 	if(!empty($customizer_options) ){ ?>
-		
-		<style type="text/css">
-			/* Theme Customizer CSS */
-            a { color: <?php echo $customizer_options['link_color']; ?>; }
-             .header-wrapper, #header-container{ background: <?php echo $customizer_options['header_color'] ?>;}
-            #secondary-menu-container, .secondary-menu ul li ul li{ background: <?php echo $customizer_options['secondary_menu_color']; ?> }
-            .footer-container{ background: <?php echo $customizer_options['footer_color'] ?>; }
-        </style>
 
-<?php }
+	<style type="text/css">
+		/* Theme Customizer CSS */
+		a { color: <?php echo $customizer_options['link_color']; ?>; }
+		.header-wrapper, #header-container{ background: <?php echo $customizer_options['header_color'] ?>;}
+		#secondary-menu-container, .secondary-menu ul li ul li{ background: <?php echo $customizer_options['secondary_menu_color']; ?> }
+		.footer-container{ background: <?php echo $customizer_options['footer_color'] ?>; }
+	</style>
+
+	<?php }
 }
 
 /**
@@ -236,13 +234,13 @@ function neutro_customizer_css(){
 add_action( 'customize_preview_init', 'neutro_customizer_live_preview' );
 
 function neutro_customizer_live_preview() {
-    wp_enqueue_script(
-            'neutro-theme-customizer',
-            THEME_URI . '/js/min/theme-customizer.min.js',
-            array( 'jquery', 'customize-preview' ),
-            '0.3.0',
-            true
-    );
+	wp_enqueue_script(
+		'neutro-theme-customizer',
+		THEME_URI . '/js/min/theme-customizer.min.js',
+		array( 'jquery', 'customize-preview' ),
+		'0.3.0',
+		true
+		);
 } 
 
 /**
@@ -257,6 +255,62 @@ function neutro_sanitize_display_logo($input){
 	}
 }
 
+function neutro_sanitize_text( $input ) {
+	return wp_kses_post( force_balance_tags( $input ) );
+}
+
+function neutro_sanitize_checkbox( $input ) {
+	if ( $input == 1 ) {
+		return 1;
+	} else {
+		return '';
+	}
+}
+
+function neutro_sanitize_image( $input ){
+
+	/* default output */
+	$output = '';
+
+	/* check file type */
+	$filetype = wp_check_filetype( $input );
+	$mime_type = $filetype['type'];
+
+	/* only mime type "image" allowed */
+	if ( strpos( $mime_type, 'image' ) !== false ){
+		$output = $input;
+	}
+
+	return $output;
+}
+
+function neutro_sanitize_taxonomy_dropdown( $input ) {
+	// $valid = array();
+
+	// if( is_array($input) ) {
+	// 	foreach ($input as $key => $value) {
+	// 		if(absint($value )) 
+	// 		{
+	// 			$valid[$key] = $value;
+	// 		} 
+	// 		else 
+	// 		{
+	// 			return $valid[$key] = '';
+	// 		}
+	// 	}
+
+	// 	return $valid;
+	// } 
+	// else {
+	// 	if(!is_null($input)) {
+	// 		return $valid = $input;
+	// 	}
+	// }
+
+	if (!is_null($input)) {
+		return $input;
+	}
+}
 
 /**
  * Enqueue javascripts for WordPress theme Frontend.
@@ -291,7 +345,7 @@ function neutro_enqueue_scripts() {
 		{
 			wp_enqueue_script( 'modernizr', hybrid_locate_theme_file( array('js/min/modernizr.min.js') ) , 
 				array('jquery'), '2.6.2', false );
-		   	wp_enqueue_script( 'main.ie', hybrid_locate_theme_file( array('js/main.js') ) , 
+			wp_enqueue_script( 'main.ie', hybrid_locate_theme_file( array('js/main.js') ) , 
 				array('jquery', 'modernizr'), false, true );
 		}
 	}
@@ -311,10 +365,10 @@ function neutro_enqueue_scripts() {
  */
 function fitvids_script_options() { 
 	echo '<script type="text/javascript">
-		jQuery(document).ready(function($) {     
-			$(".embed-wrap").fitVids(); 
-		});
-	</script>';
+	jQuery(document).ready(function($) {     
+		$(".embed-wrap").fitVids(); 
+	});
+</script>';
 } 
 add_action('wp_footer', 'fitvids_script_options');
 
@@ -412,8 +466,8 @@ add_filter( 'post_class', 'neutro_post_class');
  * @return string filtered html 
  */
 function add_class_next_post_link($html){
-    $html = str_replace('<a','<a class="next"',$html);
-    return $html;
+	$html = str_replace('<a','<a class="next"',$html);
+	return $html;
 }
 
 add_filter('next_post_link','add_class_next_post_link',10,1);
@@ -427,8 +481,8 @@ add_filter('next_post_link','add_class_next_post_link',10,1);
  * @return string filtered html
  */
 function add_class_previous_post_link($html){
-    $html = str_replace('<a','<a class="prev"',$html);
-    return $html;
+	$html = str_replace('<a','<a class="prev"',$html);
+	return $html;
 }
 
 add_filter('previous_post_link','add_class_previous_post_link',10,1);
@@ -443,7 +497,7 @@ add_filter('previous_post_link','add_class_previous_post_link',10,1);
  */
 function neutro_previous_comments_link($class){
 	$class = 'class="prev" ';
-    return $class;
+	return $class;
 }
 
 add_filter( 'previous_comments_link_attributes', 'neutro_previous_comments_link' );
@@ -457,7 +511,7 @@ add_filter( 'previous_comments_link_attributes', 'neutro_previous_comments_link'
  */
 function neutro_next_comments_link($class){
 	$class = 'class="next" ';
-    return $class;
+	return $class;
 }
 
 add_filter( 'next_comments_link_attributes', 'neutro_next_comments_link' );
@@ -471,7 +525,7 @@ add_filter( 'next_comments_link_attributes', 'neutro_next_comments_link' );
  * @return array
  */
 function add_neutro_list_comments_args($args){
-	 $args['avatar_size'] = '45';
+	$args['avatar_size'] = '45';
 
 	return $args;
 }
@@ -527,7 +581,7 @@ function neutro_register_sidebars(){
 			'after_widget' => '</section>', 
 			'before_title' => '<h3 class="widget-title">', 
 			'after_title' => '</h3>' 
-		) );
+			) );
 }
 
 /**
@@ -545,57 +599,57 @@ function neutro_comments_args(){
 	$comments_args = array(
 		'id_submit'=>'btn-comment-submit',
 		'name_submit' => 'submit',
-       	'fields' => apply_filters('comment_form_default_fields',  array( 
-       		'author' =>
-		      '<div class="view-row">' .
+		'fields' => apply_filters('comment_form_default_fields',  array( 
+			'author' =>
+			'<div class="view-row">' .
 
-		      '<div class="view-item item-title clearfix hidden-phone hidden-tablet">
-		      	<span class="form-icon icon-name"></span> <span>' . __( 'Name', 'neutro' ) . '</span> 
-		       </div> 
-  			   <span class="mobile-title visible-phone visible-tablet">' . __( 'Name', 'neutro' ) . '' . ( $req ? '*' : '' ) . ' </span>
+			'<div class="view-item item-title clearfix hidden-phone hidden-tablet">
+			<span class="form-icon icon-name"></span> <span>' . __( 'Name', 'neutro' ) . '</span> 
+		</div> 
+		<span class="mobile-title visible-phone visible-tablet">' . __( 'Name', 'neutro' ) . '' . ( $req ? '*' : '' ) . ' </span>
 
-	      	   <div class="view-item input">
-		      	<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="Fill your name  ' . ( $req ? __('(required)', 'neutro')  : '' ) . '" size="30"' . $aria_req . ' />
-		      </div>
+		<div class="view-item input">
+			<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="Fill your name  ' . ( $req ? __('(required)', 'neutro')  : '' ) . '" size="30"' . $aria_req . ' />
+		</div>
 
-		      </div>',
+	</div>',
 
-	      	'email' =>
-		      '<div class="view-row">' .
+	'email' =>
+	'<div class="view-row">' .
 
-		      '<div class="view-item item-title clearfix hidden-phone hidden-tablet">
-		      	<span class="form-icon icon-mail"></span> <span>' . __( 'Email', 'neutro' ) . '</span> 
-		       </div> 
-  			   <span class="mobile-title visible-phone visible-tablet">' . __( 'Email', 'neutro' ) . ' ' . ( $req ? '*' : '' ) . ' </span>
+	'<div class="view-item item-title clearfix hidden-phone hidden-tablet">
+	<span class="form-icon icon-mail"></span> <span>' . __( 'Email', 'neutro' ) . '</span> 
+</div> 
+<span class="mobile-title visible-phone visible-tablet">' . __( 'Email', 'neutro' ) . ' ' . ( $req ? '*' : '' ) . ' </span>
 
-	      	   <div class="view-item input">
-		      	<input id="email" name="email" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="Fill your email ' . ( $req ? __('(required)', 'neutro')  : '' ) . '" size="30"' . $aria_req . ' />
-		      </div>
+<div class="view-item input">
+	<input id="email" name="email" type="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" placeholder="Fill your email ' . ( $req ? __('(required)', 'neutro')  : '' ) . '" size="30"' . $aria_req . ' />
+</div>
 
-		      </div>',
+</div>',
 
-	      	'url' =>
-		      '<div class="view-row">' .
+'url' =>
+'<div class="view-row">' .
 
-		      '<div class="view-item item-title clearfix hidden-phone hidden-tablet">
-		      	<span class="form-icon icon-link"></span> <span>' . __( 'Website', 'neutro' ) . '</span> 
-		       </div> 
-  			   <span class="mobile-title visible-phone visible-tablet">' . __( 'Website', 'neutro' ) . ' </span>
+'<div class="view-item item-title clearfix hidden-phone hidden-tablet">
+<span class="form-icon icon-link"></span> <span>' . __( 'Website', 'neutro' ) . '</span> 
+</div> 
+<span class="mobile-title visible-phone visible-tablet">' . __( 'Website', 'neutro' ) . ' </span>
 
-	      	   <div class="view-item input">
-		      	<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '"  placeholder="Fill your Website url" size="30" />
-		      </div>
+<div class="view-item input">
+	<input id="url" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '"  placeholder="Fill your Website url" size="30" />
+</div>
 
-		      </div>'
+</div>'
 
-       	)),
+)),
         // redefine your own textarea (the comment body)
-        'comment_field' => 
-        	'<div class="view-row"> 
-        		<div class="view-item-wide"> 
-        			<textarea id="comment" name="comment" aria-required="true" cols="30" rows="10"></textarea> 
-        		</div> 
-        	</div>'
+		'comment_field' => 
+		'<div class="view-row"> 
+		<div class="view-item-wide"> 
+			<textarea id="comment" name="comment" aria-required="true" cols="30" rows="10"></textarea> 
+		</div> 
+	</div>'
 	
 	);
 
@@ -630,16 +684,16 @@ function neutro_exclude_sticky( $query ) {
  * @return string stripped input
  */
 function neutro_cleanInput($input) {
- 
-  $search = array(
+
+	$search = array(
     '@<script[^>]*?>.*?</script>@si',   // Strip out javascript
     '@<[\/\!]*?[^<>]*?>@si',            // Strip out HTML tags
     '@<style[^>]*?>.*?</style>@siU',    // Strip style tags properly
     '@<![\s\S]*?--[ \t\n\r]*>@'         // Strip multi-line comments
-  );
- 
-    $output = preg_replace($search, '', $input);
-    return $output;
+    );
+
+	$output = preg_replace($search, '', $input);
+	return $output;
 }
 
 /**
@@ -653,20 +707,20 @@ function neutro_cleanInput($input) {
  */
 function neutro_sanitize($input) {
 
-    if (is_array($input)) {
-        foreach($input as $var=>$val) {
-            $output[$var] = sanitize($val);
-        }
-    }
-    else {
-        if (get_magic_quotes_gpc()) {
-            $input = stripslashes($input);
-        }
-        $input  = neutro_cleanInput($input);
-        $output = mysql_real_escape_string($input);
-    }
+	if (is_array($input)) {
+		foreach($input as $var=>$val) {
+			$output[$var] = sanitize($val);
+		}
+	}
+	else {
+		if (get_magic_quotes_gpc()) {
+			$input = stripslashes($input);
+		}
+		$input  = neutro_cleanInput($input);
+		$output = mysql_real_escape_string($input);
+	}
 
-    return $output;
+	return $output;
 }
 
 /**
@@ -678,31 +732,31 @@ function neutro_sanitize($input) {
  * @return mixed
  */
 function neutro_get_several_gallery_thumbnail($images_count, $width = '372px', $height = '200px'){
-	 /* Check if Gallery exist inside post */
-    if ( get_post_gallery() ) :
-        $gallery = get_post_gallery( get_the_ID(), false );
+	/* Check if Gallery exist inside post */
+	if ( get_post_gallery() ) :
+		$gallery = get_post_gallery( get_the_ID(), false );
 
-        $i = 1;
-        /* Loop through all the image and output them one by one */
-        foreach( $gallery['src'] AS $src )
-        { 
-            ?>
+	$i = 1;
+	/* Loop through all the image and output them one by one */
+	foreach( $gallery['src'] AS $src )
+	{ 
+		?>
 
-            <li>
-                <figure>
-	                <a href="<?php echo get_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-	                	<img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php the_title_attribute(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"/>
-	                </a>
-                </figure>
-            </li>
-            
-            <?php
-	        /* $images_count = How many image will be shown	*/
-	        if ($i++ == $images_count) 
-	        	break;
-	        }
+		<li>
+			<figure>
+				<a href="<?php echo get_permalink(); ?>" title="<?php the_title_attribute(); ?>">
+					<img src="<?php echo $src; ?>" class="my-custom-class" alt="<?php the_title_attribute(); ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>"/>
+				</a>
+			</figure>
+		</li>
 
-    endif;			
+		<?php
+		/* $images_count = How many image will be shown	*/
+		if ($i++ == $images_count) 
+			break;
+	}
+
+	endif;			
 }
 
 /**
@@ -771,12 +825,12 @@ function neutro_video_embed_attribute(){
  * @return string first Shortcode inside post
  */
 function neutro_embed_playlist_shortcode(){
-    global $post;
-    $pattern = '\[(\[?)(playlist)(?![\w-])([^\]\/]*(?:\/(?!\])[^\]\/]*)*?)(?:(\/)\]|\](?:([^\[]*+(?:\[(?!\/\2\])[^\[]*+)*+)\[\/\2\])?)(\]?)';
+	global $post;
+	$pattern = '\[(\[?)(playlist)(?![\w-])([^\]\/]*(?:\/(?!\])[^\]\/]*)*?)(?:(\/)\]|\](?:([^\[]*+(?:\[(?!\/\2\])[^\[]*+)*+)\[\/\2\])?)(\]?)';
 
-    if ( preg_match('/'. $pattern .'/s', $post->post_content, $matches) ){
-        return($matches[0]);
-    }
+	if ( preg_match('/'. $pattern .'/s', $post->post_content, $matches) ){
+		return($matches[0]);
+	}
 }
 
 /**
@@ -816,12 +870,12 @@ add_filter('wp_audio_shortcode', 'neutro_audio_shortcode');
  * @return boolean true if IE 8.
  */
 function neutro_is_ie8(){
-    if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 8.') !== false) ){
-        return true;
-    }
-    else{
-        return false;
-    }
+	if (isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 8.') !== false) ){
+		return true;
+	}
+	else{
+		return false;
+	}
 }
 
 /**
@@ -831,8 +885,8 @@ function neutro_is_ie8(){
  */ 
 function neutro_one_column() {
 
-    if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) && !is_active_sidebar( 'tertiary' ))
-        add_filter( 'get_theme_layout', 'neutro_theme_layout_one_column' );
+	if ( !is_active_sidebar( 'primary' ) && !is_active_sidebar( 'secondary' ) && !is_active_sidebar( 'tertiary' ))
+		add_filter( 'get_theme_layout', 'neutro_theme_layout_one_column' );
 }
 
 add_action( 'template_redirect', 'neutro_one_column' );	
@@ -855,17 +909,17 @@ function neutro_theme_layout_one_column( $layout ) {
 */
 function neutro_featured_image_widths() {
 
-    $layout = theme_layouts_get_layout();        
-    
+	$layout = theme_layouts_get_layout();        
+
 	if ( $layout == 'layout-default' || $layout == 'layout-2c-r' ) {
-                $args['width'] = '768px';
-                $args['height'] = '372px';
-                $args['size'] = 'featured-image';
+		$args['width'] = '768px';
+		$args['height'] = '372px';
+		$args['size'] = 'featured-image';
 	}
 	elseif ( $layout == 'layout-1c' ) {
-	            $args['width'] = '1198px';
-	            $args['height'] = '400px';    
-	            $args['size'] = 'fullwidth-featured-image';            
+		$args['width'] = '1198px';
+		$args['height'] = '400px';    
+		$args['size'] = 'fullwidth-featured-image';            
 	}
 
 	return $args;    

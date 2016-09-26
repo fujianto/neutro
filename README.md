@@ -126,6 +126,14 @@ You can shoot me email at `septianahmad[at]naisinpo[dot]com`, visit my blog at `
 
 <h2> Changelog </h2>
 
+**1.2.5**
+
+* Move all Theme Options to Customizer.
+* Add support for screen reader text class.
+* Sanitize customizer options.
+* Fix text domain name
+* Update theme uri
+
 **1.2**
 
 * Remove all Shortcode on Theme and Hybrid framework to meet new theme review standard.
